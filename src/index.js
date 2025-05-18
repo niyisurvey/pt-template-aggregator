@@ -76,12 +76,12 @@ export default {
       }
     }
 
-    // Updated default list of template URLs including all your provided sources
+    // Updated default list of template URLs
     const defaultTemplateProviderURLs = [
       "https://raw.githubusercontent.com/portainer/templates/master/templates.json", // Official Portainer
       "https://raw.githubusercontent.com/Lissy93/portainer-templates/main/templates.json",
       "https://raw.githubusercontent.com/xneo1/portainer_templates/master/Template/template.json",
-      "https://raw.githubusercontent.com/technorabilia/portainer-templates/main/lsio/templates/templates.json", // Corrected typo
+      "https://raw.githubusercontent.com/technorabilia/portainer-templates/main/lsio/templates/templates.json", // User's preferred version
       "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Template/template.json",
       "https://raw.githubusercontent.com/TheLustriVA/portainer-templates-Nov-2022-collection/main/templates_2_2_rc_2_2.json",
       "https://raw.githubusercontent.com/ntv-one/portainer/main/template.json",
@@ -89,7 +89,9 @@ export default {
       "https://raw.githubusercontent.com/mikestraney/portainer-templates/master/templates.json",
       "https://raw.githubusercontent.com/dnburgess/self-hosted-template/master/template.json",
       "https://raw.githubusercontent.com/SelfhostedPro/selfhosted_templates/portainer-2.0/Template/template.json",
-      "https://raw.githubusercontent.com/mediadepot/templates/master/portainer.json"
+      "https://raw.githubusercontent.com/mediadepot/templates/master/portainer.json",
+      "https://raw.githubusercontent.com/novaspirit/pi-hosted/master/pi-hosted_template/template/portainer-v2.json", // Added
+      "https://raw.githubusercontent.com/shmolf/portainer-templates/main/templates-2.0.json" // Added
     ];
 
     const allTemplateUrlsToFetch = [...new Set([...userProvidedTemplateUrls, ...defaultTemplateProviderURLs])];
@@ -197,7 +199,7 @@ export default {
     response.headers.append('X-Worker-Processed-Templates-Count', uniqueTemplates.length.toString());
     response.headers.append('X-Worker-Successful-Sources-Count', successfulSources.length.toString());
     response.headers.append('X-Worker-Failed-Sources-Count', failedSources.length.toString());
-    const MAX_HEADER_LIST_LENGTH = 10; // Increased slightly to show more failing sources if needed
+    const MAX_HEADER_LIST_LENGTH = 10;
     response.headers.append('X-Worker-Successful-Sources-List', JSON.stringify(successfulSources.slice(0, MAX_HEADER_LIST_LENGTH)));
     response.headers.append('X-Worker-Failed-Sources-List', JSON.stringify(failedSources.map(f => ({url: f.url, reason: String(f.reason).substring(0,100)})).slice(0, MAX_HEADER_LIST_LENGTH)));
 

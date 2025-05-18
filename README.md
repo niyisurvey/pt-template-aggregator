@@ -183,10 +183,10 @@ This method allows you or anyone using your deployed worker URL to dynamically a
 
 ## 📜 Default Template Sources Used by This Worker
 
-This worker is configured by default in `src/index.js` to attempt to fetch templates from the following community and official sources. I've included many known ones from GitHub; you can curate this list in `src/index.js` to your preference. *Please note that the availability and content of these external URLs can change, and some may become outdated or produce errors over time. Always verify sources.*
+This worker is configured by default in `src/index.js` to attempt to fetch templates from the following community and official sources. This list has been curated based on known template providers; you can further customize this list in `src/index.js` to your preference. *Please note that the availability and content of these external URLs can change, and some may become outdated or produce errors over time. Always verify sources.*
 
 * **Official Portainer:** `https://raw.githubusercontent.com/portainer/templates/master/templates.json`
-* **Lissy93:** `https://raw.githubusercontent.com/Lissy93/portainer-templates/main/templates.json`
+* **Lissy93:** `https://raw.githubusercontent.com/Lissy93/portainer-templates/main/templates.json` (Aggregated list)
 * **xneo1:** `https://raw.githubusercontent.com/xneo1/portainer_templates/master/Template/template.json`
 * **technorabilia:** `https://raw.githubusercontent.com/technorabilia/portainer-templates/main/lsio/templates/templates.json`
 * **Qballjos:** `https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Template/template.json`
@@ -197,6 +197,8 @@ This worker is configured by default in `src/index.js` to attempt to fetch templ
 * **dnburgess:** `https://raw.githubusercontent.com/dnburgess/self-hosted-template/master/template.json`
 * **SelfhostedPro:** `https://raw.githubusercontent.com/SelfhostedPro/selfhosted_templates/portainer-2.0/Template/template.json`
 * **mediadepot:** `https://raw.githubusercontent.com/mediadepot/templates/master/portainer.json`
+* **novaspirit:** `https://raw.githubusercontent.com/novaspirit/pi-hosted/master/pi-hosted_template/template/portainer-v2.json`
+* **shmolf:** `https://raw.githubusercontent.com/shmolf/portainer-templates/main/templates-2.0.json`
 
 You can modify the `defaultTemplateProviderURLs` array in `src/index.js` to add, remove, or change these sources, then re-deploy the worker.
 
