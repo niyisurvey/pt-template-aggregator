@@ -55,7 +55,7 @@ Got a great Portainer V2 template list (a URL pointing to a valid JSON file) tha
     * A direct link to the raw JSON template file URL.
     * A brief reason why you think it's a good addition.
 
-I'll review suggestions and consider adding them to the `defaultTemplateProviderURLs` in `src/index.js` in future updates! This helps keep the default list comprehensive and up-to-date.
+I'll review suggestions and consider adding them to the `defaultTemplateProviderURLs` in `src/index.js` in future updates!
 
 ## 🚀 Deployment & Usage
 
