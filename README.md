@@ -38,6 +38,14 @@ It then:
 6.  Sorts the list alphabetically by title.
 7.  Returns a Portainer V2 compatible JSON response.
 
+## 📦 Aggregated App Template List
+
+This worker aggregates a wide variety of application templates from multiple sources. Based on the default configuration, it can typically fetch and de-duplicate several hundred unique app templates!
+
+👉 **[View an example list of aggregated app titles (app_titles.txt)](app_titles.txt)**
+
+*Note: This list is based on app titles successfully processed by the worker using the default sources at a specific point in time. The actual number and specific apps available through your deployed worker will vary depending on the current status and content of the upstream template sources defined in your `src/index.js` and any dynamic URLs you provide.*
+
 ## 💡 TL;DR - Want More Default Templates Added?
 
 Got a great Portainer V2 template list (a URL pointing to a valid JSON file) that you think should be included in the default set for everyone using this worker? The easiest way to suggest it is to:
