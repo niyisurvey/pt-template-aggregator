@@ -20,7 +20,7 @@ This project was created because the original GitLab snippet by Ibaraki (and sim
 3.  Implement more resilient fetching and parsing logic.
 4.  Offer clearer logging and diagnostics via Cloudflare Worker logs and response headers.
 
-I needed a reliable way to manage a large and diverse set of Portainer templates for my self-hosting setup.
+I needed a reliable way to manage a large and diverse set of Portainer templates for my self-hosting setup. The original sources often weren't updated.
 
 ## 🛠️ How It Works
 
@@ -164,30 +164,40 @@ This method allows you or anyone using your deployed worker URL to dynamically a
 
 ## 📜 Default Template Sources Used by This Worker
 
-This worker currently includes the following default sources in `src/index.js` (you can curate this list):
-* `https://raw.githubusercontent.com/portainer/templates/master/templates.json` (Official Portainer)
-* `https://raw.githubusercontent.com/Lissy93/portainer-templates/main/templates.json`
-* `https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Template/template.json`
-* `https://raw.githubusercontent.com/SelfhostedPro/selfhosted_templates/portainer-2.0/Template/template.json`
-    *(Please verify these URLs are still active and suitable for your needs before relying on them.)*
+This worker is configured by default in `src/index.js` to attempt to fetch templates from the following community and official sources. I've included many known ones from GitHub; you can curate this list in `src/index.js` to your preference. *Please note that the availability and content of these external URLs can change, and some may become outdated or produce errors over time. Always verify sources.*
+
+* **Official Portainer:** `https://raw.githubusercontent.com/portainer/templates/master/templates.json`
+* **Lissy93:** `https://raw.githubusercontent.com/Lissy93/portainer-templates/main/templates.json`
+* **xneo1:** `https://raw.githubusercontent.com/xneo1/portainer_templates/master/Template/template.json`
+* **technorabilia:** `https://raw.githubusercontent.com/technorabilia/portainer-templates/main/lsio/templates/templates.json`
+* **Qballjos:** `https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Template/template.json`
+* **TheLustriVA:** `https://raw.githubusercontent.com/TheLustriVA/portainer-templates-Nov-2022-collection/main/templates_2_2_rc_2_2.json`
+* **ntv-one:** `https://raw.githubusercontent.com/ntv-one/portainer/main/template.json`
+* **mycroftwilde:** `https://raw.githubusercontent.com/mycroftwilde/portainer_templates/master/Template/template.json`
+* **mikestraney:** `https://raw.githubusercontent.com/mikestraney/portainer-templates/master/templates.json`
+* **dnburgess:** `https://raw.githubusercontent.com/dnburgess/self-hosted-template/master/template.json`
+* **SelfhostedPro:** `https://raw.githubusercontent.com/SelfhostedPro/selfhosted_templates/portainer-2.0/Template/template.json`
+* **mediadepot:** `https://raw.githubusercontent.com/mediadepot/templates/master/portainer.json`
+
+You can modify the `defaultTemplateProviderURLs` array in `src/index.js` to add, remove, or change these sources, then re-deploy the worker.
 
 ## 🙏 Credits & Acknowledgements
 
 * This project is an evolution of the concept originally shared by **Ibaraki** on GitLab: `https://git.ibaraki.app/-/snippets/3` (Original CF Worker for dynamic portainer templates). Thank you for the initial idea!
 * Inspired by discussions and issues reported by the community on various forums regarding Portainer custom templates.
-* Uses template sources provided by the Portainer team and various community members like Lissy93, Qballjos, SelfhostedPro, whose contributions to the self-hosting community are greatly appreciated.
+* Uses template sources provided by the Portainer team and various community members (as listed above), whose contributions to the self-hosting community are greatly appreciated.
 
 ## 📝 My Changes & Motivations (from original snippet)
 
 Compared to the original GitLab snippet or other available solutions, this version aims to:
-* **Update Source URLs**: The official Portainer template URL was updated, and other sources verified/added.
+* **Update Source URLs**: The official Portainer template URL was updated, and a comprehensive list of community sources has been included by default.
 * **Improve Error Handling**: More resilient fetching, better handling of non-JSON responses (like `text/plain` from GitHub raw links), and timeout management.
 * **Enhance Logging**: Added more detailed `console.log` statements for easier debugging via Cloudflare Worker logs.
 * **Diagnostic Headers**: Implemented `X-Worker-*` response headers to provide a summary of fetched sources and processed templates.
 * **Code Structure**: Refactored the worker script for better readability and maintenance.
 * **Favicon Handling**: Added specific ignoring of `/favicon.ico` requests to keep logs cleaner.
 
-The primary motivation was that some older solutions weren't working reliably due to changes in Portainer, template source availability/format, and error handling limitations.
+The primary motivation was that some older solutions weren't working reliably due to changes in Portainer, template source availability/format, and error handling limitations. This version attempts to address those issues by incorporating a wider range of sources and more robust processing.
 
 ## 📄 License
 

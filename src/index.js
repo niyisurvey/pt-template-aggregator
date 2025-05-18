@@ -15,42 +15,40 @@ export default {
         const response = await fetch(url, {
           signal: controller.signal,
           headers: {
-            'User-Agent': `PortainerTemplatesWorker/1.3 (+${requestUrl.hostname})`, // Use actual worker hostname
+            'User-Agent': `PortainerTemplatesWorker/1.3 (+${requestUrl.hostname})`,
             'Accept': 'application/json, text/plain, */*;q=0.8',
           }
         });
         clearTimeout(timeoutId);
 
         if (!response.ok) {
-          console.error(`Failed to fetch '${sourceDescription}' (${url}): HTTP ${response.status} ${response.statusText}`);
+          console.error(`Failed to fetch '<span class="math-inline">\{sourceDescription\}' \(</span>{url}): HTTP ${response.status} ${response.statusText}`);
           return { error: `HTTP ${response.status} ${response.statusText}`, url, status: response.status };
         }
 
         const responseText = await response.text();
         const contentType = response.headers.get("content-type");
 
-        // Check if it's obviously HTML first
         if (responseText.trim().startsWith("<")) {
-             console.warn(`Workspaceed '${sourceDescription}' (${url}), but content appears to be HTML (starts with '<'). Content-Type: ${contentType}`);
+             console.warn(`Workspaceed '<span class="math-inline">\{sourceDescription\}' \(</span>{url}), but content appears to be HTML (starts with '<'). Content-Type: ${contentType}`);
              return { error: `Content appears to be HTML.`, url, content_snippet: responseText.substring(0,150) };
         }
 
-        // Attempt to parse as JSON. This is more robust to GitHub serving JSON files as text/plain.
         try {
-            console.log(`Successfully fetched content from '${sourceDescription}' (${url}). Content-Type: ${contentType}. Attempting to parse as JSON.`);
+            console.log(`Successfully fetched content from '<span class="math-inline">\{sourceDescription\}' \(</span>{url}). Content-Type: ${contentType}. Attempting to parse as JSON.`);
             return JSON.parse(responseText);
         } catch (e_json) {
-            console.error(`Error parsing JSON from '${sourceDescription}' (${url}): ${e_json.message}. Content-Type: ${contentType}. Response text (first 150 chars): '${responseText.substring(0,150)}'`);
+            console.error(`Error parsing JSON from '<span class="math-inline">\{sourceDescription\}' \(</span>{url}): ${e_json.message}. Content-Type: <span class="math-inline">\{contentType\}\. Response text \(first 150 chars\)\: '</span>{responseText.substring(0,150)}'`);
             return { error: `JSON Parse Error: ${e_json.message}`, url, content_type: contentType, content_snippet: responseText.substring(0,150) };
         }
 
       } catch (e) {
         clearTimeout(timeoutId);
         if (e.name === 'AbortError') {
-            console.error(`Timeout fetching '${sourceDescription}' (${url}) after 15 seconds.`);
+            console.error(`Timeout fetching '<span class="math-inline">\{sourceDescription\}' \(</span>{url}) after 15 seconds.`);
             return { error: 'Fetch timeout after 15 seconds', url };
         }
-        console.error(`Network or other error fetching '${sourceDescription}' (${url}): ${e.message}`);
+        console.error(`Network or other error fetching '<span class="math-inline">\{sourceDescription\}' \(</span>{url}): ${e.message}`);
         return { error: e.message, url };
       }
     }
@@ -58,17 +56,6 @@ export default {
     let aggregatedTemplates = [];
     const failedSources = [];
     const successfulSources = [];
-    
-    // Add a simple built-in template for basic testing. You can remove this later.
-    /*
-    aggregatedTemplates.push({
-        "type": 1, "title": "Test Nginx (Worker Built-in)", "name": "nginx-test-worker-builtin",
-        "description": "A test Nginx server, included directly in the worker if all external sources fail.",
-        "categories": ["Test", "Web"], "platform": "linux", "logo": "https://raw.githubusercontent.com/portainer/templates/master/logos/nginx.png",
-        "image": "nginx:alpine", "ports": ["8081:80/tcp"], "restart_policy": "unless-stopped",
-        "note": "This is a test template hardcoded into the worker for debugging external source issues."
-    });
-    */
 
     const qTemplatesB64 = requestUrl.searchParams.get("templates");
     let userProvidedTemplateUrls = [];
@@ -89,14 +76,20 @@ export default {
       }
     }
 
-    // Updated default list of template URLs
+    // Updated default list of template URLs including all your provided sources
     const defaultTemplateProviderURLs = [
-      "https://raw.githubusercontent.com/portainer/templates/master/templates.json", // CORRECTED Official Portainer templates
+      "https://raw.githubusercontent.com/portainer/templates/master/templates.json", // Official Portainer
       "https://raw.githubusercontent.com/Lissy93/portainer-templates/main/templates.json",
+      "https://raw.githubusercontent.com/xneo1/portainer_templates/master/Template/template.json",
+      "https://raw.githubusercontent.com/technorabilia/portainer-templates/main/lsio/templates/templates.json", // Corrected typo
       "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Template/template.json",
+      "https://raw.githubusercontent.com/TheLustriVA/portainer-templates-Nov-2022-collection/main/templates_2_2_rc_2_2.json",
+      "https://raw.githubusercontent.com/ntv-one/portainer/main/template.json",
+      "https://raw.githubusercontent.com/mycroftwilde/portainer_templates/master/Template/template.json",
+      "https://raw.githubusercontent.com/mikestraney/portainer-templates/master/templates.json",
+      "https://raw.githubusercontent.com/dnburgess/self-hosted-template/master/template.json",
       "https://raw.githubusercontent.com/SelfhostedPro/selfhosted_templates/portainer-2.0/Template/template.json",
-      // Add other trusted V2 template URLs here if you know them.
-      // Example: "https://raw.githubusercontent.com/technorabilia/portainer-templates/main/lsio/templates/templates-2.0.json", // This one was noted as sometimes V1
+      "https://raw.githubusercontent.com/mediadepot/templates/master/portainer.json"
     ];
 
     const allTemplateUrlsToFetch = [...new Set([...userProvidedTemplateUrls, ...defaultTemplateProviderURLs])];
@@ -109,7 +102,7 @@ export default {
       }
 
       console.log(`Workspaceing templates from: ${tURL}`);
-      const result = await fetchAndParseJson(tURL, tURL); // Using tURL as sourceDescription for brevity in logs
+      const result = await fetchAndParseJson(tURL, tURL);
 
       if (result.error) {
         failedSources.push({ url: tURL, reason: result.error, status: result.status, content_snippet: result.content_snippet });
@@ -160,7 +153,7 @@ export default {
             aggregatedTemplates.push(t);
             countValidTemplatesInSource++;
           } else {
-            console.warn(`Skipping malformed/incomplete template from ${tURL}. Title: '${String(t.title || "N/A").substring(0,50)}', Type: '${t.type || "N/A"}'.`);
+            console.warn(`Skipping malformed/incomplete template from <span class="math-inline">\{tURL\}\. Title\: '</span>{String(t.title || "N/A").substring(0,50)}', Type: '${t.type || "N/A"}'.`);
           }
         }
 
@@ -185,7 +178,7 @@ export default {
             console.warn(`Template found without a valid title, excluding from final list: ${JSON.stringify(t).substring(0,100)}`);
         }
     }
-    
+
     uniqueTemplates.sort((a, b) => (a.title || "").localeCompare(b.title || ""));
 
     const finalJsonResponse = {
@@ -204,10 +197,10 @@ export default {
     response.headers.append('X-Worker-Processed-Templates-Count', uniqueTemplates.length.toString());
     response.headers.append('X-Worker-Successful-Sources-Count', successfulSources.length.toString());
     response.headers.append('X-Worker-Failed-Sources-Count', failedSources.length.toString());
-    const MAX_HEADER_LIST_LENGTH = 5; // To avoid overly long headers
+    const MAX_HEADER_LIST_LENGTH = 10; // Increased slightly to show more failing sources if needed
     response.headers.append('X-Worker-Successful-Sources-List', JSON.stringify(successfulSources.slice(0, MAX_HEADER_LIST_LENGTH)));
     response.headers.append('X-Worker-Failed-Sources-List', JSON.stringify(failedSources.map(f => ({url: f.url, reason: String(f.reason).substring(0,100)})).slice(0, MAX_HEADER_LIST_LENGTH)));
-    
+
     return response;
   },
 };
