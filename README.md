@@ -42,7 +42,7 @@ It then:
 
 This worker aggregates a wide variety of application templates from multiple sources. Based on the default configuration, it can typically fetch and de-duplicate several hundred unique app templates!
 
-👉 **[View an example list of aggregated app titles (app_titles.txt)](app_titles.txt)**
+👉 **[View the current list of aggregated app titles (app_titles.txt)](app_titles.txt)**
 
 *Note: This list is based on app titles successfully processed by the worker using the default sources at a specific point in time. The actual number and specific apps available through your deployed worker will vary depending on the current status and content of the upstream template sources defined in your `src/index.js` and any dynamic URLs you provide.*
 
