@@ -7,7 +7,8 @@
 	"name": "fresh-portainer-worker-cf",
 	"main": "src/index.js",
 	"compatibility_date": "2025-05-17",
-	"observability": {
+	"compatibility_flags": [ "nodejs_compat" ], // <-- ADD THIS LINE
+	"observability": {                         // <-- Ensure there's a comma after the line above
 		"enabled": true
 	}
 	/**
