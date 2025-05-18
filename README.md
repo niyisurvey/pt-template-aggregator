@@ -38,6 +38,17 @@ It then:
 6.  Sorts the list alphabetically by title.
 7.  Returns a Portainer V2 compatible JSON response.
 
+## 💡 TL;DR - Want More Default Templates Added?
+
+Got a great Portainer V2 template list (a URL pointing to a valid JSON file) that you think should be included in the default set for everyone using this worker? The easiest way to suggest it is to:
+
+1.  **Open an Issue** on this GitHub repository (`https://github.com/niyisurvey/pt-template-aggregator/issues`).
+2.  In the issue, please provide:
+    * A direct link to the raw JSON template file URL.
+    * A brief reason why you think it's a good addition.
+
+I'll review suggestions and consider adding them to the `defaultTemplateProviderURLs` in `src/index.js` in future updates! This helps keep the default list comprehensive and up-to-date.
+
 ## 🚀 Deployment & Usage
 
 ### Prerequisites
