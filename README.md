@@ -222,7 +222,4 @@ The primary motivation was that some older solutions weren't working reliably du
 
 ## 📄 License
 
-This project is provided as is. You are free to use, modify, and distribute it. If you wish to specify a formal open-source license, please create a `LICENSE` file (e.g., MIT License).
-
----
-Maintained by Niyi Survey.
+This project is provided as is. You are free to use, modify, and distribute it. A mention though wouldn't go amiss 🥹 
