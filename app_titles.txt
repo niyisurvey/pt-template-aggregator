@@ -1,0 +1,574 @@
+Activepieces
+Actual
+Adguard
+Adguard Home
+Adguardhome-sync
+Airsonic
+Airsonic-advanced
+Alpine Xfce4 noVNC
+Altus
+Ansible-semaphore
+Apache Httpd
+Apprise-API
+Appsmith
+Appwrite
+ArchiSteamFarm
+Archivebox
+Ardour
+Aria2 Pro
+AriaNG
+Asciinema {shmolf}
+Audacity
+Audiobookshelf
+Authelia
+Authentik
+Autobrr
+Babybuddy
+Baikal
+Bambustudio
+Baserow
+Bazarr
+Beets
+Beszel
+Bitwarden RS
+Blender
+Blinko
+Boinc
+Booksonic
+Booksonic-air
+Bookstack
+Broadlink Manager
+Budge
+Budibase
+Caddy
+Calibre
+Calibre Web
+Calibre-web
+Calligra
+Cardigann
+Castopod
+Change Detection
+ChangeDetection
+Changedetection.io
+Checkmate
+Chevereto
+Chibisafe
+Chiefonboarding
+Chowdown
+Chromium
+Chrony NTP
+Clamav
+Cloud Commander
+Cloud9
+Cloudflare DDNS
+Cockpit {shmolf}
+CockroachDB
+Code Server
+Code-server
+Code-server {shmolf}
+Codex
+Codiad
+CommandBox
+ContentBox
+COPS
+Couchpotato
+CrateDB
+Cryptofolio
+Cura
+Daapd
+Darktable
+Dashdot
+DashMachine
+Dashy
+Datadog agent
+DaVinci Postgres Server
+Davos
+Dawarich
+Ddclient
+DeeMix
+Deluge
+Deluge openvpn
+Digikam
+Dillinger
+Diskover
+Docker Container Stats
+Docker-compose
+Dockge
+Documize
+Dokemon
+Dokku
+Dokuwiki
+Domoticz
+Doplarr
+Doublecommander
+Dozzle
+Dradis
+Draw.io
+Droppy
+Drupal
+Duck DNS
+DuckDNS
+Duplicacy
+Duplicati
+Eclipse Mosquitto MQTT
+EdgeConnector 840D
+EdgeConnector Aggregator
+EdgeConnector FANUC CNC
+EdgeConnector Modbus
+EdgeConnector Siemens
+Elasticsearch
+Emby
+EmbyStat
+Emulatorjs
+Endlessh
+Eufy Security WS
+Excalidraw
+Fail2ban
+Faster-whisper
+FDO
+Feed2toot
+Feedcord
+Fenrus
+Ferdi Server
+Ferdium
+Fetchcord
+Ffmpeg
+File browser
+Filebrowser
+FileBrowser latest
+FileBrowser S6
+Filepizza
+Filerun
+Filestash
+Filezilla
+Firefox
+Fireshare
+Flame
+Flame-Dashboard
+FlareSolverr
+Fleet
+Flexget
+Floating License Server
+Flood
+Flowiseai
+Foldingathome
+FoundryVTT Server
+Freeboard
+Freecad
+Freescout
+Freetube
+FreshRSS
+Frigate NVR
+Funkwhale
+Fusion
+Gaps
+Gathio
+Gazee
+Ghost
+Ghostfolio
+Gimp
+Gitea
+Github-desktop
+Gitlab CE
+Gitqlient
+Glances
+Go-Socks5-Proxy
+Gokapi
+Gotify
+Grafana
+Grav
+Grocy
+Guacamole
+Guacd
+Habridge
+Hasty-Paste
+Hauk
+Headphones
+Healthchecks
+Hedgedoc
+Heimdall
+Hishtory-server
+Hoarder
+Homarr
+Homarr-Secured
+Home Assistant
+Homeassistant
+Homebridge
+Homebridge - Debian
+Homechart
+Homepage
+Homer
+HTPC Manager
+Htpcmanager
+Httpd
+Huginn
+hydra2
+I hate money
+Immich
+Immich {shmolf}
+Infisical {shmolf}
+Influxdb
+Influxdb & Telegraf
+Influxdb 1.8.10
+Inkscape
+Invidious
+Invoice Ninja
+iobroker
+iperf
+Ipfs
+IronFunctions
+IronFunctions API
+IronFunctions UI
+Jackett
+JDownloader
+Jellyfin
+Jellyfin-Accounts
+Jellyseer
+Jellyseerr
+Jenkins
+Jenkins-builder
+Joomla
+Joplin
+Jump
+Kali-linux
+Kanzi
+Kapowarr
+Kasm
+Kasm Workspaces
+Kavita
+Kdenlive
+Keepassxc
+Kicad
+Kimai
+Kiwix
+Klaxon
+Klipper[Testing], Mainsail, Moonraker
+Kodi Headless
+kodi-headless
+Koillection
+Kometa
+Komga
+Krita
+LazyLibrarian
+Lazytainer
+Ldap-auth
+Leantime
+Let's Encrypt
+Let's Encrypt / SWAG
+letsencrypt
+libreddit
+Libreoffice
+libresonic
+Librespeed
+Librewolf
+lidarr
+Limnoria
+Linkstack
+Littlelink Server
+LiveSwitch
+LLDAP
+Loggifly
+Logzio Logs Collector
+Logzio Metrics Collector
+Lollypop
+Luanti
+Lychee
+Magento 2
+MagicMirror2
+Mailpile
+Maloja
+Manubes Edge Node
+Manyfold
+MariaDB
+Markopolis
+Mastodon
+Matomo
+Mautic
+Mayan EDMS
+McMyAdmin 2
+Mealie
+Medama
+Mediaelch
+Medusa
+Meilisearch
+Meshcentral
+MeTube
+Microsoft OMS Agent
+Midarr
+Minecraft Server
+Minetest
+Miniflux
+Minio
+Minisatip
+Modmanager
+Mongo
+Monica
+Moodle
+Mozilla Syncserver
+Msedge
+Mstream
+Mullvad-browser
+Murmur
+MusicBrainz
+Muximux
+Mylar
+Mylar3
+MySQL
+Mysql-workbench
+n8n
+Nano
+Nano-wallet
+Navidrome
+Neko
+NetAlertX
+Netboot.xyz
+Netbootxyz
+Netbox
+Netdata
+Nextcloud
+NextcloudStack
+Nexterm
+Nginx
+Nginx Proxy Manager
+Nginx Proxy Manager v2 with Sqlite and Goaccess Charts
+Nginx Proxy Manager v2 with Sqllite
+Nginx Proxy Manager v3 [DEVEL] NOT READY FOR USE
+Ngircd
+Nitter
+Nntp2nntp
+NocoDB
+NodeJS
+Nodered
+nord-vpn
+NUT Server
+Nutify
+NUTS
+NZBGet
+NZBHydra 2
+Nzbhydra2
+Obsidian
+OctoPrint
+Odoo
+Omada EAP Controller
+Ombi
+OPC Router
+OpenAMT
+OpenBudgeteer
+OpenFaaS
+Openshot
+Openssh-server
+OpenVPN Access Server
+openvpn-as
+Openvscode-server
+Opera
+OpnForm
+Orcaslicer
+Organizr
+Organizr v2
+Ory Kratos (Oathkeeper)
+Ory Kratos (Standalone)
+OScam
+Outline
+Overseerr
+Owncloud
+Pairdrop
+Paperless NGX
+Paperless-ng
+Papermerge
+Passbolt
+Passky Client
+Passky Server
+Penpot (http) {shmolf}
+Petio
+pgAdmin
+Photoprism
+PhotoShow
+Phpmyadmin
+Pi-Hole
+Pi-Hole DoH/DoT
+Pi-Hole-Unbound
+Pi.alert
+Pidgin
+Pinchflat
+Pingvin
+Piper
+Piwigo
+Pixapop
+Pixel-server
+Plane
+Planka
+Plesk
+Plex
+Plex Media Server
+Plex Requests
+PlexTraktSync
+Plone
+Portainer Agent
+Poste.io
+PostgreSQL
+Pritunl
+PrivateBin
+Pro Mosquitto with Management Center
+ProjectSend
+ProtonMail Bridge
+Prowlarr
+ProxiTok
+Pure-FTP Server
+pve-exporter
+Pwndrop
+Pydio
+Pydio-cells
+Pyload
+Pyload-ng
+Pylon
+qBittorrent
+qdirstat
+Qemu-static
+qFlood
+Quassel IRC
+quassel-core
+Quassel-web
+RabbitMQ
+Radarr
+Raneto
+Raspberry Pi Docker Monitor
+Rawtherapee
+Rclone Config Backup
+Rdesktop
+Reactive-Resume
+Readarr
+Redis
+Redis Cluster
+Redmine
+Registry
+Registry (cache)
+Remmina
+Remotely
+Requestrr
+Resilio Sync
+Resilio-sync
+Reveal.js
+Rocket Chat
+RomM
+Rport
+Rsnapshot
+Rust Desk
+Rustdesk
+ruTorrent
+SABnzbd
+Samba
+Scality S3
+Scrutiny
+SearXNG
+Sematext Docker Agent
+Series-troxide
+Servas
+Shaarli
+Shiori
+Shotcut
+SickChill
+SickGear
+SickRage
+Signal Proxy
+Silverstripe
+SmokePing
+Snapdrop
+Snibox
+Snipe-it
+Snippet Box
+Socket-proxy
+Solr
+Sonarr
+Speedtest Tracker
+Speedtest-tracker
+Spotube
+SQL Server
+SQL Server Express
+Sqlitebrowser
+Sshwifty
+Stash
+Statping
+Steamos
+Stirling PDF {shmolf}
+Stirling-PDF
+SurrealDB
+Swag
+Swarm monitoring
+Synclounge
+SyncThing
+Syslog-ng
+System Stats OLED display
+Tabby
+Tailscale
+Taisun
+Tandoor
+Tautulli
+Tdarr
+Teleport
+Terraria Server {shmolf}
+TheLounge
+TiddlyWiki
+TimeTagger
+Tiny Tiny RSS
+TinyMediaManager
+Tooljet
+TOSIBOX Lock for Container
+Traefik
+Traggo
+Transmission
+Transmission OpenVPN Latest
+Transmission OpenVPN v3
+Transmission-OpenVPN
+Trilium
+Trudesk
+Tubearchivist
+Tvheadend
+Twitch Points Miner
+Ubooquity
+Ubuntu
+Umami.is
+Ungoogled-chromium
+UniFi Controller
+UniFi Video
+Unifi-controller
+Unifi-network-application
+Unmanic
+Upsnap
+Uptime Kuma
+Urbackup
+UrlWatch
+Vaultwarden
+Vikunja
+Vlmcsd - KMS
+Vscodium
+vsftpd FTP Server
+Wallabag
+Watchtower
+Watchtower {shmolf}
+Web Check
+Webcord
+WebGrab+Plus
+Webgrabplus
+Webtop
+Webtrees
+Wger
+Whisparr
+Whoogle
+Wikijs
+Wireguard
+Wireguard Server
+Wireshark
+Wizarr
+Wordpress
+Wowza
+Wps-office
+Xbackbone
+Xwiki
+Yaak
+Yacht
+Your_spotify
+YouTubeDL-Material
+Yq
+ZNC
+Zotero
+Zus.am
