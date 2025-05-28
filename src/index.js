@@ -91,7 +91,10 @@ export default {
       "https://raw.githubusercontent.com/SelfhostedPro/selfhosted_templates/portainer-2.0/Template/template.json",
       "https://raw.githubusercontent.com/mediadepot/templates/master/portainer.json",
       "https://raw.githubusercontent.com/novaspirit/pi-hosted/master/pi-hosted_template/template/portainer-v2.json", // Added
-      "https://raw.githubusercontent.com/shmolf/portainer-templates/main/templates-2.0.json" // Added
+      "https://raw.githubusercontent.com/shmolf/portainer-templates/main/templates-2.0.json", // Added
+			"https://raw.githubusercontent.com/niyisurvey/pt-template-aggregator/main/casaos-official-templates.json",
+			"https://raw.githubusercontent.com/niyisurvey/pt-template-aggregator/main/casaos-playstore-templates.json"
+];
     ];
 
     const allTemplateUrlsToFetch = [...new Set([...userProvidedTemplateUrls, ...defaultTemplateProviderURLs])];
