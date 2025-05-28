@@ -1,0 +1,698 @@
+[
+  {
+    "type": 3,
+    "title": "2FAuth (CasaOS)",
+    "name": "casaos-2fauth",
+    "description": "No description provided.",
+    "logo": "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/2FAuth/icon.png",
+    "categories": [
+      "Utilities",
+      "CasaOS"
+    ],
+    "platform": "linux",
+    "composefile_content": "name: 2fauth\nservices:\n  2fauth:\n    image: 2fauth/2fauth:5.4.3\n    deploy:\n      resources:\n        reservations:\n          memory: 64M\n    network_mode: bridge\n    ports:\n      - target: 8000\n        published: '8000'\n        protocol: tcp\n    restart: always\n    volumes:\n      - 2fauth_data:/2fauth\n    container_name: 2fauth\nvolumes:\n  2fauth_data: {}\n",
+    "note": "Portainer template generated from CasaOS AppStore. Original app ID: 2fauth.\nReview volumes and configurations. PUID/PGID default to 1000, TZ to Etc/UTC. App-specific paths like '/DATA/AppData/2fauth/...' have been converted to Docker named volumes (e.g., 'casaos-2fauth_config', 'casaos-2fauth_data'). Ensure these named volumes are suitable or adjust as needed."
+  },
+  {
+    "type": 3,
+    "title": "AdGuardHome (CasaOS)",
+    "name": "casaos-adguard-home",
+    "description": "No description provided.",
+    "logo": "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/AdGuardHome/icon.png",
+    "categories": [
+      "Network",
+      "CasaOS"
+    ],
+    "platform": "linux",
+    "composefile_content": "name: adguard-home\nservices:\n  adguard-home:\n    image: adguard/adguardhome:v0.107.55\n    deploy:\n      resources:\n        reservations:\n          memory: 64M\n    network_mode: bridge\n    ports:\n      - target: 53\n        published: '531'\n        protocol: tcp\n      - target: 53\n        published: '531'\n        protocol: udp\n      - target: 3000\n        published: '3001'\n        protocol: tcp\n      - target: 853\n        published: '853'\n        protocol: tcp\n      - target: 784\n        published: '784'\n        protocol: udp\n    restart: unless-stopped\n    volumes:\n      - adguard-home_opt_adguardhome_work:/opt/adguardhome/work\n      - adguard-home_opt_adguardhome_conf:/opt/adguardhome/conf\n    container_name: adguard-home\nvolumes:\n  adguard-home_opt_adguardhome_work: {}\n  adguard-home_opt_adguardhome_conf: {}\n",
+    "note": "Portainer template generated from CasaOS AppStore. Original app ID: adguard Home.\nReview volumes and configurations. PUID/PGID default to 1000, TZ to Etc/UTC. App-specific paths like '/DATA/AppData/adguard Home/...' have been converted to Docker named volumes (e.g., 'casaos-adguard-home_config', 'casaos-adguard-home_data'). Ensure these named volumes are suitable or adjust as needed."
+  },
+  {
+    "type": 3,
+    "title": "Bazarr (CasaOS)",
+    "name": "casaos-bazarr",
+    "description": "No description provided.",
+    "logo": "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Bazarr/icon.png",
+    "categories": [
+      "Media",
+      "CasaOS"
+    ],
+    "platform": "linux",
+    "composefile_content": "name: bazarr\nservices:\n  bazarr:\n    environment:\n      - PGID=1000\n      - PUID=1000\n      - TZ=Europe/London\n    image: linuxserver/bazarr:1.5.1\n    deploy:\n      resources:\n        reservations:\n          memory: 64M\n    network_mode: bridge\n    ports:\n      - target: 6767\n        published: '6767'\n        protocol: tcp\n    restart: unless-stopped\n    volumes:\n      - type: bind\n        source: /DATA/Media/Movies\n        target: /movies\n      - type: bind\n        source: /DATA/Media/TV Shows\n        target: /tv\n      - type: bind\n        source: /DATA/AppData/bazarr/config\n        target: /config\n    container_name: bazarr\n",
+    "note": "Portainer template generated from CasaOS AppStore. Original app ID: Bazarr.\nReview volumes and configurations. PUID/PGID default to 1000, TZ to Etc/UTC. App-specific paths like '/DATA/AppData/Bazarr/...' have been converted to Docker named volumes (e.g., 'casaos-bazarr_config', 'casaos-bazarr_data'). Ensure these named volumes are suitable or adjust as needed."
+  },
+  {
+    "type": 3,
+    "title": "Calibre-web (CasaOS)",
+    "name": "casaos-calibre-web",
+    "description": "No description provided.",
+    "logo": "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Calibre-web/icon.png",
+    "categories": [
+      "Media",
+      "CasaOS"
+    ],
+    "platform": "linux",
+    "composefile_content": "name: calibre-web\nservices:\n  calibre-web:\n    environment:\n      - DOCKER_MODS=ghcr.io/linuxserver/mods:universal-calibre\n      - PGID=1000\n      - PUID=1000\n      - TZ=Etc/UTC\n    image: linuxserver/calibre-web:0.6.24\n    deploy:\n      resources:\n        reservations:\n          memory: 64M\n    network_mode: bridge\n    ports:\n      - target: 8083\n        published: '8083'\n        protocol: tcp\n    restart: unless-stopped\n    volumes:\n      - calibre-web_config:/config\n      - type: bind\n        source: /DATA/Media/Books\n        target: /books\n    container_name: calibre-web\nvolumes:\n  calibre-web_config: {}\n",
+    "note": "Portainer template generated from CasaOS AppStore. Original app ID: calibre-web.\nReview volumes and configurations. PUID/PGID default to 1000, TZ to Etc/UTC. App-specific paths like '/DATA/AppData/calibre-web/...' have been converted to Docker named volumes (e.g., 'casaos-calibre-web_config', 'casaos-calibre-web_data'). Ensure these named volumes are suitable or adjust as needed."
+  },
+  {
+    "type": 3,
+    "title": "Crafty (CasaOS)",
+    "name": "casaos-crafty",
+    "description": "No description provided.",
+    "logo": "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Crafty/icon.png",
+    "categories": [
+      "Games",
+      "CasaOS"
+    ],
+    "platform": "linux",
+    "composefile_content": "name: crafty\nversion: '3'\nservices:\n  crafty:\n    container_name: crafty-container\n    image: registry.gitlab.com/crafty-controller/crafty-4:4.4.4\n    restart: always\n    environment:\n      - TZ=Etc/UTC\n    ports:\n      - '8111:8443'\n      - '8112:8123'\n      - 19132:19132/udp\n      - 25500-25600:25500-25600\n    volumes:\n      - crafty_backups:/crafty/backups\n      - crafty_logs:/crafty/logs\n      - crafty_servers:/crafty/servers\n      - crafty_config:/crafty/app/config\n      - crafty_import:/crafty/import\nvolumes:\n  crafty_backups: {}\n  crafty_logs: {}\n  crafty_servers: {}\n  crafty_config: {}\n  crafty_import: {}\n",
+    "note": "Portainer template generated from CasaOS AppStore. Original app ID: crafty.\nReview volumes and configurations. PUID/PGID default to 1000, TZ to Etc/UTC. App-specific paths like '/DATA/AppData/crafty/...' have been converted to Docker named volumes (e.g., 'casaos-crafty_config', 'casaos-crafty_data'). Ensure these named volumes are suitable or adjust as needed."
+  },
+  {
+    "type": 3,
+    "title": "Deluge (CasaOS)",
+    "name": "casaos-deluge",
+    "description": "No description provided.",
+    "logo": "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Deluge/icon.png",
+    "categories": [
+      "Downloader",
+      "CasaOS"
+    ],
+    "platform": "linux",
+    "composefile_content": "name: deluge\nservices:\n  deluge:\n    environment:\n      - DELUGE_LOGLEVEL=error\n      - PGID=1000\n      - PUID=1000\n      - TZ=Etc/UTC\n    image: linuxserver/deluge:2.1.1\n    deploy:\n      resources:\n        reservations:\n          memory: 256M\n    network_mode: bridge\n    ports:\n      - target: 8112\n        published: '8112'\n        protocol: tcp\n      - target: 6881\n        published: '6881'\n        protocol: tcp\n      - target: 6881\n        published: '6881'\n        protocol: udp\n    restart: unless-stopped\n    volumes:\n      - deluge_config:/config\n      - type: bind\n        source: /DATA\n        target: /DATA\n    container_name: deluge\nvolumes:\n  deluge_config: {}\n",
+    "note": "Portainer template generated from CasaOS AppStore. Original app ID: deluge.\nReview volumes and configurations. PUID/PGID default to 1000, TZ to Etc/UTC. App-specific paths like '/DATA/AppData/deluge/...' have been converted to Docker named volumes (e.g., 'casaos-deluge_config', 'casaos-deluge_data'). Ensure these named volumes are suitable or adjust as needed."
+  },
+  {
+    "type": 3,
+    "title": "Duplicati (CasaOS)",
+    "name": "casaos-duplicati",
+    "description": "No description provided.",
+    "logo": "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Duplicati/icon.png",
+    "categories": [
+      "Cloud",
+      "CasaOS"
+    ],
+    "platform": "linux",
+    "composefile_content": "name: duplicati\nservices:\n  duplicati:\n    environment:\n      - PGID=1000\n      - PUID=1000\n      - TZ=Europe/London\n    image: linuxserver/duplicati:2.1.0\n    deploy:\n      resources:\n        reservations:\n          memory: 64M\n    network_mode: bridge\n    ports:\n      - target: 8200\n        published: '8200'\n        protocol: tcp\n    restart: unless-stopped\n    volumes:\n      - duplicati_config:/config\n      - type: bind\n        source: /DATA/Duplicati/backups\n        target: /backups\n      - type: bind\n        source: /DATA/Duplicati/source\n        target: /source\n    container_name: duplicati\nvolumes:\n  duplicati_config: {}\n",
+    "note": "Portainer template generated from CasaOS AppStore. Original app ID: duplicati.\nReview volumes and configurations. PUID/PGID default to 1000, TZ to Etc/UTC. App-specific paths like '/DATA/AppData/duplicati/...' have been converted to Docker named volumes (e.g., 'casaos-duplicati_config', 'casaos-duplicati_data'). Ensure these named volumes are suitable or adjust as needed."
+  },
+  {
+    "type": 3,
+    "title": "Emby (CasaOS)",
+    "name": "casaos-emby",
+    "description": "No description provided.",
+    "logo": "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Emby/icon.png",
+    "categories": [
+      "Media",
+      "CasaOS"
+    ],
+    "platform": "linux",
+    "composefile_content": "name: emby\nservices:\n  emby:\n    devices:\n      - /dev/dri:/dev/dri\n      - /dev/vchiq:/dev/vchiq\n      - /dev/video10:/dev/video10\n      - /dev/video11:/dev/video11\n      - /dev/video12:/dev/video12\n    environment:\n      - PGID=1000\n      - PUID=1000\n      - TZ=Etc/UTC\n    image: linuxserver/emby:4.8.10\n    deploy:\n      resources:\n        reservations:\n          memory: 64M\n    network_mode: bridge\n    ports:\n      - target: 8096\n        published: '8096'\n        protocol: tcp\n      - target: 8920\n        published: '8920'\n        protocol: tcp\n    restart: unless-stopped\n    volumes:\n      - emby_config:/config\n      - type: bind\n        source: /DATA/Media/TV Shows\n        target: /data/tvshows\n      - type: bind\n        source: /DATA/Media/Movies\n        target: /data/movies\n    container_name: emby\nvolumes:\n  emby_config: {}\n",
+    "note": "Portainer template generated from CasaOS AppStore. Original app ID: emby.\nReview volumes and configurations. PUID/PGID default to 1000, TZ to Etc/UTC. App-specific paths like '/DATA/AppData/emby/...' have been converted to Docker named volumes (e.g., 'casaos-emby_config', 'casaos-emby_data'). Ensure these named volumes are suitable or adjust as needed."
+  },
+  {
+    "type": 3,
+    "title": "Embystat (CasaOS)",
+    "name": "casaos-embystat",
+    "description": "No description provided.",
+    "logo": "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Embystat/icon.png",
+    "categories": [
+      "Media",
+      "CasaOS"
+    ],
+    "platform": "linux",
+    "composefile_content": "name: embystat\nservices:\n  embystat:\n    environment:\n      - PGID=1000\n      - PUID=1000\n      - TZ=Europe/London\n    image: linuxserver/embystat:0.2.0\n    deploy:\n      resources:\n        reservations:\n          memory: 64M\n    network_mode: bridge\n    ports:\n      - target: 6555\n        published: '6555'\n        protocol: tcp\n    restart: unless-stopped\n    volumes:\n      - type: bind\n        source: /DATA/AppData/embystat/config\n        target: /config\n    container_name: embystat\n",
+    "note": "Portainer template generated from CasaOS AppStore. Original app ID: Embystat.\nReview volumes and configurations. PUID/PGID default to 1000, TZ to Etc/UTC. App-specific paths like '/DATA/AppData/Embystat/...' have been converted to Docker named volumes (e.g., 'casaos-embystat_config', 'casaos-embystat_data'). Ensure these named volumes are suitable or adjust as needed."
+  },
+  {
+    "type": 3,
+    "title": "EmulatorJS (CasaOS)",
+    "name": "casaos-emulatorjs",
+    "description": "No description provided.",
+    "logo": "https://icon.casaos.io/main/all/emulatorjs.png",
+    "categories": [
+      "CasaOS"
+    ],
+    "platform": "linux",
+    "composefile_content": "name: emulatorjs\nservices:\n  emulatorjs:\n    environment:\n      - PGID=1000\n      - PUID=1000\n      - SUBFOLDER=/\n      - TZ=Etc/UTC\n    image: linuxserver/emulatorjs:1.9.2\n    network_mode: bridge\n    ports:\n      - target: 3000\n        published: '3001'\n        protocol: tcp\n      - target: 4001\n        published: '4001'\n        protocol: tcp\n      - target: 80\n        published: '88'\n        protocol: tcp\n    privileged: true\n    restart: unless-stopped\n    volumes:\n      - emulatorjs_config:/config\n      - emulatorjs_data:/data\n      - type: bind\n        source: /ROMS/nes\n        target: /data/nes/roms\n    container_name: emulatorjs\nvolumes:\n  emulatorjs_config: {}\n  emulatorjs_data: {}\n",
+    "note": "Portainer template generated from CasaOS AppStore. Original app ID: EmulatorJS.\nReview volumes and configurations. PUID/PGID default to 1000, TZ to Etc/UTC. App-specific paths like '/DATA/AppData/EmulatorJS/...' have been converted to Docker named volumes (e.g., 'casaos-emulatorjs_config', 'casaos-emulatorjs_data'). Ensure these named volumes are suitable or adjust as needed."
+  },
+  {
+    "type": 3,
+    "title": "FileBrowser (CasaOS)",
+    "name": "casaos-filebrowser",
+    "description": "No description provided.",
+    "logo": "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/FileBrowser/icon.png",
+    "categories": [
+      "Cloud, Utilities, Documents",
+      "CasaOS"
+    ],
+    "platform": "linux",
+    "composefile_content": "name: filebrowser\nservices:\n  filebrowser:\n    environment:\n      - PGID=1000\n      - PUID=1000\n      - TZ=Etc/UTC\n    image: filebrowser/filebrowser:v2.23.0\n    deploy:\n      resources:\n        reservations:\n          memory: 64M\n    network_mode: bridge\n    ports:\n      - target: 80\n        published: '10180'\n        protocol: tcp\n    restart: unless-stopped\n    volumes:\n      - filebrowser_db:/db\n      - type: bind\n        source: /DATA\n        target: /srv\n    container_name: filebrowser\nvolumes:\n  filebrowser_db: {}\n",
+    "note": "Portainer template generated from CasaOS AppStore. Original app ID: filebrowser.\nReview volumes and configurations. PUID/PGID default to 1000, TZ to Etc/UTC. App-specific paths like '/DATA/AppData/filebrowser/...' have been converted to Docker named volumes (e.g., 'casaos-filebrowser_config', 'casaos-filebrowser_data'). Ensure these named volumes are suitable or adjust as needed."
+  },
+  {
+    "type": 3,
+    "title": "Gitea (CasaOS)",
+    "name": "casaos-gitea",
+    "description": "No description provided.",
+    "logo": "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Gitea/icon.png",
+    "categories": [
+      "Developer",
+      "CasaOS"
+    ],
+    "platform": "linux",
+    "composefile_content": "name: gitea\nservices:\n  gitea:\n    environment:\n      - USER_GID=1000\n      - USER_UID=1000\n    image: gitea/gitea:1.22.4\n    deploy:\n      resources:\n        reservations:\n          memory: 256M\n    network_mode: bridge\n    ports:\n      - target: 3000\n        published: '3002'\n        protocol: tcp\n      - target: 22\n        published: '222'\n        protocol: tcp\n    restart: unless-stopped\n    volumes:\n      - gitea_data:/data\n    container_name: gitea\nvolumes:\n  gitea_data: {}\n",
+    "note": "Portainer template generated from CasaOS AppStore. Original app ID: gitea.\nReview volumes and configurations. PUID/PGID default to 1000, TZ to Etc/UTC. App-specific paths like '/DATA/AppData/gitea/...' have been converted to Docker named volumes (e.g., 'casaos-gitea_config', 'casaos-gitea_data'). Ensure these named volumes are suitable or adjust as needed."
+  },
+  {
+    "type": 3,
+    "title": "Grafana (CasaOS)",
+    "name": "casaos-grafana",
+    "description": "No description provided.",
+    "logo": "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Grafana/icon.png",
+    "categories": [
+      "Network",
+      "CasaOS"
+    ],
+    "platform": "linux",
+    "composefile_content": "name: grafana\nservices:\n  grafana:\n    image: grafana/grafana:11.5.2\n    deploy:\n      resources:\n        reservations:\n          memory: 64M\n    network_mode: bridge\n    ports:\n      - target: 3000\n        published: '3003'\n        protocol: tcp\n    restart: always\n    volumes:\n      - grafana_data:/var/lib/grafana\n    container_name: grafana\nvolumes:\n  grafana_data: {}\n",
+    "note": "Portainer template generated from CasaOS AppStore. Original app ID: grafana.\nReview volumes and configurations. PUID/PGID default to 1000, TZ to Etc/UTC. App-specific paths like '/DATA/AppData/grafana/...' have been converted to Docker named volumes (e.g., 'casaos-grafana_config', 'casaos-grafana_data'). Ensure these named volumes are suitable or adjust as needed."
+  },
+  {
+    "type": 3,
+    "title": "Handbrake (CasaOS)",
+    "name": "casaos-handbrake",
+    "description": "No description provided.",
+    "logo": "https://icon.casaos.io/main/all/handbrake.png",
+    "categories": [
+      "CasaOS"
+    ],
+    "platform": "linux",
+    "composefile_content": "name: handbrake\nservices:\n  handbrake:\n    image: jlesage/handbrake:v25.02.3\n    network_mode: bridge\n    ports:\n      - target: 5800\n        published: '5800'\n        protocol: tcp\n    privileged: true\n    restart: unless-stopped\n    volumes:\n      - type: bind\n        source: /DATA\n        target: /storage\n      - handbrake_watch:/watch\n      - type: bind\n        source: /DATA/Media\n        target: /output\n      - handbrake_config:/config\n    container_name: handbrake\nvolumes:\n  handbrake_watch: {}\n  handbrake_config: {}\n",
+    "note": "Portainer template generated from CasaOS AppStore. Original app ID: Handbrake.\nReview volumes and configurations. PUID/PGID default to 1000, TZ to Etc/UTC. App-specific paths like '/DATA/AppData/Handbrake/...' have been converted to Docker named volumes (e.g., 'casaos-handbrake_config', 'casaos-handbrake_data'). Ensure these named volumes are suitable or adjust as needed."
+  },
+  {
+    "type": 3,
+    "title": "Jackett (CasaOS)",
+    "name": "casaos-jackett",
+    "description": "No description provided.",
+    "logo": "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Jackett/icon.png",
+    "categories": [
+      "Network",
+      "CasaOS"
+    ],
+    "platform": "linux",
+    "composefile_content": "name: jackett\nservices:\n  jackett:\n    environment:\n      - AUTO_UPDATE=true\n      - PGID=1000\n      - PUID=1000\n      - TZ=Europe/London\n    image: linuxserver/jackett:0.22.1660\n    deploy:\n      resources:\n        reservations:\n          memory: 64M\n    network_mode: bridge\n    ports:\n      - target: 9117\n        published: '9117'\n        protocol: tcp\n    restart: unless-stopped\n    volumes:\n      - jackett_config:/config\n      - type: bind\n        source: /DATA/Downloads\n        target: /downloads\n    container_name: jackett\nvolumes:\n  jackett_config: {}\n",
+    "note": "Portainer template generated from CasaOS AppStore. Original app ID: jackett.\nReview volumes and configurations. PUID/PGID default to 1000, TZ to Etc/UTC. App-specific paths like '/DATA/AppData/jackett/...' have been converted to Docker named volumes (e.g., 'casaos-jackett_config', 'casaos-jackett_data'). Ensure these named volumes are suitable or adjust as needed."
+  },
+  {
+    "type": 3,
+    "title": "Jellyfin (CasaOS)",
+    "name": "casaos-jellyfin",
+    "description": "No description provided.",
+    "logo": "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Jellyfin/icon.png",
+    "categories": [
+      "Media",
+      "CasaOS"
+    ],
+    "platform": "linux",
+    "composefile_content": "name: jellyfin\nservices:\n  jellyfin:\n    devices:\n      - /dev/dri:/dev/dri\n      - /dev/vcsm:/dev/vcsm\n      - /dev/vchiq:/dev/vchiq\n      - /dev/video10:/dev/video10\n      - /dev/video11:/dev/video11\n      - /dev/video12:/dev/video12\n    environment:\n      - PGID=1000\n      - PUID=1000\n      - TZ=Etc/UTC\n    image: linuxserver/jellyfin:10.10.6\n    deploy:\n      resources:\n        reservations:\n          memory: 256M\n    network_mode: bridge\n    ports:\n      - target: 8096\n        published: '8097'\n        protocol: tcp\n      - target: 8920\n        published: '8921'\n        protocol: tcp\n      - target: 7359\n        published: '7359'\n        protocol: tcp\n      - target: 1900\n        published: '1901'\n        protocol: tcp\n    restart: unless-stopped\n    volumes:\n      - jellyfin_config:/config\n      - type: bind\n        source: /DATA/Media\n        target: /Media\n      - type: bind\n        source: /opt/vc/lib\n        target: /opt/vc/lib\n    container_name: jellyfin\nvolumes:\n  jellyfin_config: {}\n",
+    "note": "Portainer template generated from CasaOS AppStore. Original app ID: jellyfin.\nReview volumes and configurations. PUID/PGID default to 1000, TZ to Etc/UTC. App-specific paths like '/DATA/AppData/jellyfin/...' have been converted to Docker named volumes (e.g., 'casaos-jellyfin_config', 'casaos-jellyfin_data'). Ensure these named volumes are suitable or adjust as needed."
+  },
+  {
+    "type": 3,
+    "title": "Lazylibrarian (CasaOS)",
+    "name": "casaos-lazylibrarian",
+    "description": "No description provided.",
+    "logo": "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Lazylibrarian/icon.png",
+    "categories": [
+      "Downloader",
+      "CasaOS"
+    ],
+    "platform": "linux",
+    "composefile_content": "name: lazylibrarian\nservices:\n  lazylibrarian:\n    environment:\n      - >-\n        DOCKER_MODS=linuxserver/calibre-web:calibre|linuxserver/mods:lazylibrarian-ffmpeg\n      - PGID=1000\n      - PUID=1000\n      - TZ=Etc/UTC\n    image: linuxserver/lazylibrarian:version-7ef0109b\n    deploy:\n      resources:\n        reservations:\n          memory: 64M\n    network_mode: bridge\n    ports:\n      - target: 5299\n        published: '5299'\n        protocol: tcp\n    restart: unless-stopped\n    volumes:\n      - type: bind\n        source: /DATA/Downloads\n        target: /downloads\n      - type: bind\n        source: /DATA/Media/Books\n        target: /books\n      - type: bind\n        source: /DATA/AppData/lazylibrarian/config\n        target: /config\n    container_name: lazylibrarian\n",
+    "note": "Portainer template generated from CasaOS AppStore. Original app ID: Lazylibrarian.\nReview volumes and configurations. PUID/PGID default to 1000, TZ to Etc/UTC. App-specific paths like '/DATA/AppData/Lazylibrarian/...' have been converted to Docker named volumes (e.g., 'casaos-lazylibrarian_config', 'casaos-lazylibrarian_data'). Ensure these named volumes are suitable or adjust as needed."
+  },
+  {
+    "type": 3,
+    "title": "Lidarr (CasaOS)",
+    "name": "casaos-lidarr",
+    "description": "No description provided.",
+    "logo": "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Lidarr/icon.png",
+    "categories": [
+      "Downloader",
+      "CasaOS"
+    ],
+    "platform": "linux",
+    "composefile_content": "name: lidarr\nservices:\n  lidarr:\n    environment:\n      - PGID=1000\n      - PUID=1000\n      - TZ=Europe/London\n    image: linuxserver/lidarr:2.9.6\n    deploy:\n      resources:\n        reservations:\n          memory: 64M\n    network_mode: bridge\n    ports:\n      - target: 8686\n        published: '8686'\n        protocol: tcp\n    restart: unless-stopped\n    volumes:\n      - type: bind\n        source: /DATA/AppData/lidarr/config\n        target: /config\n      - type: bind\n        source: /DATA/Media/Music\n        target: /music\n      - type: bind\n        source: /DATA/Downloads\n        target: /downloads\n    container_name: lidarr\n",
+    "note": "Portainer template generated from CasaOS AppStore. Original app ID: Lidarr.\nReview volumes and configurations. PUID/PGID default to 1000, TZ to Etc/UTC. App-specific paths like '/DATA/AppData/Lidarr/...' have been converted to Docker named volumes (e.g., 'casaos-lidarr_config', 'casaos-lidarr_data'). Ensure these named volumes are suitable or adjust as needed."
+  },
+  {
+    "type": 3,
+    "title": "MineOS (CasaOS)",
+    "name": "casaos-mineos-node",
+    "description": "No description provided.",
+    "logo": "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/MineOS/icon.png",
+    "categories": [
+      "Games",
+      "CasaOS"
+    ],
+    "platform": "linux",
+    "composefile_content": "name: mineos-node\nservices:\n  mineos:\n    image: hexparrot/mineos:latest\n    container_name: mineos_server\n    networks:\n      - mineos\n    restart: unless-stopped\n    stop_grace_period: 10m\n    volumes:\n      - /var/games/mineos/minecraft:/var/games/minecraft\n    environment:\n      - USE_HTTPS=true\n      - SERVER_PORT=8443\n      - USER_NAME=mc\n      - USER_UID=1000\n      - USER_PASSWORD=root\n    ports:\n      - 8444:8443/tcp\n      - 25565-25570:25565-25570/tcp\n      - 25565-25570:25565-25570/udp\nvolumes:\n  mineos_data: null\nnetworks:\n  mineos: null\n",
+    "note": "Portainer template generated from CasaOS AppStore. Original app ID: mineos-node.\nReview volumes and configurations. PUID/PGID default to 1000, TZ to Etc/UTC. App-specific paths like '/DATA/AppData/mineos-node/...' have been converted to Docker named volumes (e.g., 'casaos-mineos-node_config', 'casaos-mineos-node_data'). Ensure these named volumes are suitable or adjust as needed."
+  },
+  {
+    "type": 3,
+    "title": "Mylar3 (CasaOS)",
+    "name": "casaos-mylar3",
+    "description": "No description provided.",
+    "logo": "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Mylar3/icon.png",
+    "categories": [
+      "Downloader",
+      "CasaOS"
+    ],
+    "platform": "linux",
+    "composefile_content": "name: mylar3\nservices:\n  mylar3:\n    environment:\n      - PGID=1000\n      - PUID=1000\n      - TZ=Etc/UTC\n    image: linuxserver/mylar3:0.8.2\n    deploy:\n      resources:\n        reservations:\n          memory: 64M\n    network_mode: bridge\n    ports:\n      - target: 8090\n        published: '8090'\n        protocol: tcp\n    restart: unless-stopped\n    volumes:\n      - type: bind\n        source: /DATA/AppData/mylar3/config\n        target: /config\n      - type: bind\n        source: /DATA/Media/Comics\n        target: /comics\n      - type: bind\n        source: /DATA/Downloads\n        target: /downloads\n    container_name: mylar3\n",
+    "note": "Portainer template generated from CasaOS AppStore. Original app ID: Mylar3.\nReview volumes and configurations. PUID/PGID default to 1000, TZ to Etc/UTC. App-specific paths like '/DATA/AppData/Mylar3/...' have been converted to Docker named volumes (e.g., 'casaos-mylar3_config', 'casaos-mylar3_data'). Ensure these named volumes are suitable or adjust as needed."
+  },
+  {
+    "type": 3,
+    "title": "N8n (CasaOS)",
+    "name": "casaos-n8n",
+    "description": "No description provided.",
+    "logo": "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/N8n/icon.png",
+    "categories": [
+      "Utilities",
+      "CasaOS"
+    ],
+    "platform": "linux",
+    "composefile_content": "name: n8n\nservices:\n  n8n:\n    environment:\n      - TZ=Etc/UTC\n      - N8N_SECURE_COOKIE=false\n    image: n8nio/n8n:1.84.0\n    deploy:\n      resources:\n        reservations:\n          memory: 320M\n    network_mode: bridge\n    ports:\n      - target: 5678\n        published: '5678'\n        protocol: tcp\n    restart: unless-stopped\n    volumes:\n      - n8n_data:/home/node/.n8n\n    container_name: n8n\nvolumes:\n  n8n_data: {}\n",
+    "note": "Portainer template generated from CasaOS AppStore. Original app ID: n8n.\nReview volumes and configurations. PUID/PGID default to 1000, TZ to Etc/UTC. App-specific paths like '/DATA/AppData/n8n/...' have been converted to Docker named volumes (e.g., 'casaos-n8n_config', 'casaos-n8n_data'). Ensure these named volumes are suitable or adjust as needed."
+  },
+  {
+    "type": 3,
+    "title": "Nextcloud (CasaOS)",
+    "name": "casaos-nextcloud",
+    "description": "No description provided.",
+    "logo": "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Nextcloud/icon.png",
+    "categories": [
+      "Cloud",
+      "CasaOS"
+    ],
+    "platform": "linux",
+    "composefile_content": "name: nextcloud\nservices:\n  nextcloud:\n    image: nextcloud:31.0\n    deploy:\n      resources:\n        reservations:\n          memory: 512M\n    network_mode: bridge\n    ports:\n      - target: 80\n        published: '10081'\n        protocol: tcp\n      - target: 443\n        published: '10443'\n        protocol: tcp\n    restart: unless-stopped\n    volumes:\n      - nextcloud_var_www_html:/var/www/html\n    container_name: nextcloud\nvolumes:\n  nextcloud_var_www_html: {}\n",
+    "note": "Portainer template generated from CasaOS AppStore. Original app ID: nextcloud.\nReview volumes and configurations. PUID/PGID default to 1000, TZ to Etc/UTC. App-specific paths like '/DATA/AppData/nextcloud/...' have been converted to Docker named volumes (e.g., 'casaos-nextcloud_config', 'casaos-nextcloud_data'). Ensure these named volumes are suitable or adjust as needed."
+  },
+  {
+    "type": 3,
+    "title": "NginxProxyManager (CasaOS)",
+    "name": "casaos-nginxproxymanager",
+    "description": "No description provided.",
+    "logo": "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/NginxProxyManager/icon.png",
+    "categories": [
+      "Network",
+      "CasaOS"
+    ],
+    "platform": "linux",
+    "composefile_content": "name: nginxproxymanager\nservices:\n  nginxproxymanager:\n    image: jc21/nginx-proxy-manager:2.12.3\n    deploy:\n      resources:\n        reservations:\n          memory: 128M\n    network_mode: bridge\n    ports:\n      - target: 80\n        published: '80'\n        protocol: tcp\n      - target: 443\n        published: '443'\n        protocol: tcp\n      - target: 81\n        published: '81'\n        protocol: tcp\n    restart: unless-stopped\n    volumes:\n      - nginxproxymanager_data:/data\n      - nginxproxymanager_etc_letsencrypt:/etc/letsencrypt\n    container_name: nginxproxymanager\nvolumes:\n  nginxproxymanager_data: {}\n  nginxproxymanager_etc_letsencrypt: {}\n",
+    "note": "Portainer template generated from CasaOS AppStore. Original app ID: nginxproxymanager.\nReview volumes and configurations. PUID/PGID default to 1000, TZ to Etc/UTC. App-specific paths like '/DATA/AppData/nginxproxymanager/...' have been converted to Docker named volumes (e.g., 'casaos-nginxproxymanager_config', 'casaos-nginxproxymanager_data'). Ensure these named volumes are suitable or adjust as needed."
+  },
+  {
+    "type": 3,
+    "title": "Node-RED (CasaOS)",
+    "name": "casaos-node-red",
+    "description": "No description provided.",
+    "logo": "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Node-RED/icon.png",
+    "categories": [
+      "Developer",
+      "CasaOS"
+    ],
+    "platform": "linux",
+    "composefile_content": "name: node-red\nservices:\n  node-red:\n    image: nodered/node-red:4.0.9-22\n    deploy:\n      resources:\n        reservations:\n          memory: 64M\n    network_mode: host\n    ports:\n      - target: 1880\n        published: '1880'\n        protocol: tcp\n    restart: always\n    volumes:\n      - node-red_data:/data\n    container_name: node-red\nvolumes:\n  node-red_data: {}\n",
+    "note": "Portainer template generated from CasaOS AppStore. Original app ID: node-red.\nReview volumes and configurations. PUID/PGID default to 1000, TZ to Etc/UTC. App-specific paths like '/DATA/AppData/node-red/...' have been converted to Docker named volumes (e.g., 'casaos-node-red_config', 'casaos-node-red_data'). Ensure these named volumes are suitable or adjust as needed."
+  },
+  {
+    "type": 3,
+    "title": "Nzbget (CasaOS)",
+    "name": "casaos-nzbget",
+    "description": "No description provided.",
+    "logo": "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Nzbget/icon.png",
+    "categories": [
+      "Downloader",
+      "CasaOS"
+    ],
+    "platform": "linux",
+    "composefile_content": "name: nzbget\nservices:\n  nzbget:\n    environment:\n      - NZBGET_PASS=tegbzn6789\n      - NZBGET_USER=nzbget\n      - PGID=1000\n      - PUID=1000\n      - TZ=Europe/London\n    image: linuxserver/nzbget:24.8.20250318\n    deploy:\n      resources:\n        reservations:\n          memory: 64M\n    network_mode: bridge\n    ports:\n      - target: 6789\n        published: '6789'\n        protocol: tcp\n    restart: unless-stopped\n    volumes:\n      - type: bind\n        source: /DATA/AppData/nzbget/config\n        target: /config\n      - type: bind\n        source: /DATA/Downloads\n        target: /downloads\n    container_name: nzbget\n",
+    "note": "Portainer template generated from CasaOS AppStore. Original app ID: Nzbget.\nReview volumes and configurations. PUID/PGID default to 1000, TZ to Etc/UTC. App-specific paths like '/DATA/AppData/Nzbget/...' have been converted to Docker named volumes (e.g., 'casaos-nzbget_config', 'casaos-nzbget_data'). Ensure these named volumes are suitable or adjust as needed."
+  },
+  {
+    "type": 3,
+    "title": "Ombi (CasaOS)",
+    "name": "casaos-ombi",
+    "description": "No description provided.",
+    "logo": "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Ombi/icon.png",
+    "categories": [
+      "Media",
+      "CasaOS"
+    ],
+    "platform": "linux",
+    "composefile_content": "name: ombi\nservices:\n  ombi:\n    environment:\n      - BASE_URL=/ombi\n      - PGID=1000\n      - PUID=1000\n      - TZ=Europe/London\n    image: linuxserver/ombi:4.47.1\n    deploy:\n      resources:\n        reservations:\n          memory: 64M\n    network_mode: bridge\n    ports:\n      - target: 3579\n        published: '3579'\n        protocol: tcp\n    restart: unless-stopped\n    volumes:\n      - type: bind\n        source: /DATA/AppData/ombi/config\n        target: /config\n    container_name: ombi\n",
+    "note": "Portainer template generated from CasaOS AppStore. Original app ID: Ombi.\nReview volumes and configurations. PUID/PGID default to 1000, TZ to Etc/UTC. App-specific paths like '/DATA/AppData/Ombi/...' have been converted to Docker named volumes (e.g., 'casaos-ombi_config', 'casaos-ombi_data'). Ensure these named volumes are suitable or adjust as needed."
+  },
+  {
+    "type": 3,
+    "title": "OpenHAB (CasaOS)",
+    "name": "casaos-openhab",
+    "description": "No description provided.",
+    "logo": "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/OpenHAB/icon.png",
+    "categories": [
+      "Home Automation",
+      "CasaOS"
+    ],
+    "platform": "linux",
+    "composefile_content": "name: openhab\nservices:\n  openhab:\n    environment:\n      - CRYPTO_POLICY=unlimited\n      - PGID=1000\n      - PUID=1000\n    image: openhab/openhab:4.3.3\n    deploy:\n      resources:\n        reservations:\n          memory: 64M\n    network_mode: host\n    restart: unless-stopped\n    volumes:\n      - type: bind\n        source: /etc/localtime\n        target: /etc/localtime\n        read_only: true\n      - type: bind\n        source: /etc/timezone\n        target: /etc/timezone\n        read_only: true\n      - openhab_addons:/openhab/addons\n      - openhab_conf:/openhab/conf\n      - openhab_userdata:/openhab/userdata\n    container_name: openhab\nvolumes:\n  openhab_addons: {}\n  openhab_conf: {}\n  openhab_userdata: {}\n",
+    "note": "Portainer template generated from CasaOS AppStore. Original app ID: openhab.\nReview volumes and configurations. PUID/PGID default to 1000, TZ to Etc/UTC. App-specific paths like '/DATA/AppData/openhab/...' have been converted to Docker named volumes (e.g., 'casaos-openhab_config', 'casaos-openhab_data'). Ensure these named volumes are suitable or adjust as needed."
+  },
+  {
+    "type": 3,
+    "title": "OpenSpeedTest (CasaOS)",
+    "name": "casaos-openspeedtest",
+    "description": "No description provided.",
+    "logo": "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/OpenSpeedTest/icon.png",
+    "categories": [
+      "Utilities, Network",
+      "CasaOS"
+    ],
+    "platform": "linux",
+    "composefile_content": "name: openspeedtest\nservices:\n  openspeedtest:\n    image: openspeedtest/latest:v2.0.6\n    deploy:\n      resources:\n        reservations:\n          memory: 64M\n    network_mode: bridge\n    ports:\n      - target: 3000\n        published: '3004'\n        protocol: tcp\n    restart: always\n    container_name: openspeedtest\n",
+    "note": "Portainer template generated from CasaOS AppStore. Original app ID: openspeedtest.\nReview volumes and configurations. PUID/PGID default to 1000, TZ to Etc/UTC. App-specific paths like '/DATA/AppData/openspeedtest/...' have been converted to Docker named volumes (e.g., 'casaos-openspeedtest_config', 'casaos-openspeedtest_data'). Ensure these named volumes are suitable or adjust as needed."
+  },
+  {
+    "type": 3,
+    "title": "PhotoPrism (CasaOS)",
+    "name": "casaos-photoprism",
+    "description": "No description provided.",
+    "logo": "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/PhotoPrism/icon.png",
+    "categories": [
+      "Gallery",
+      "CasaOS"
+    ],
+    "platform": "linux",
+    "composefile_content": "name: photoprism\nservices:\n  photoprism:\n    environment:\n      - PHOTOPRISM_ADMIN_PASSWORD=casaos\n      - PHOTOPRISM_UPLOAD_NSFW=true\n      - TZ=Etc/UTC\n    image: photoprism/photoprism:250228\n    deploy:\n      resources:\n        reservations:\n          memory: 512M\n    network_mode: bridge\n    ports:\n      - target: 2342\n        published: '2342'\n        protocol: tcp\n    restart: unless-stopped\n    volumes:\n      - photoprism_photoprism_storage:/photoprism/storage\n      - type: bind\n        source: /DATA/Gallery\n        target: /photoprism/originals\n    container_name: photoprism\nvolumes:\n  photoprism_photoprism_storage: {}\n",
+    "note": "Portainer template generated from CasaOS AppStore. Original app ID: photoprism.\nReview volumes and configurations. PUID/PGID default to 1000, TZ to Etc/UTC. App-specific paths like '/DATA/AppData/photoprism/...' have been converted to Docker named volumes (e.g., 'casaos-photoprism_config', 'casaos-photoprism_data'). Ensure these named volumes are suitable or adjust as needed."
+  },
+  {
+    "type": 3,
+    "title": "Pihole (CasaOS)",
+    "name": "casaos-pihole",
+    "description": "No description provided.",
+    "logo": "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Pihole/icon.png",
+    "categories": [
+      "Network",
+      "CasaOS"
+    ],
+    "platform": "linux",
+    "composefile_content": "name: pihole\nservices:\n  pihole:\n    environment:\n      - PROXY_LOCATION=pi.hole\n      - TZ=Etc/UTC\n      - VIRTUAL_HOST=pi.hole\n      - WEBPASSWORD=casaos\n    image: pihole/pihole:2025.03.0\n    deploy:\n      resources:\n        reservations:\n          memory: 64M\n    network_mode: bridge\n    ports:\n      - target: 80\n        published: '8800'\n        protocol: tcp\n      - target: 53\n        published: '53'\n        protocol: tcp\n      - target: 53\n        published: '53'\n        protocol: udp\n      - target: 67\n        published: '67'\n        protocol: udp\n      - target: 547\n        published: '547'\n        protocol: udp\n    restart: unless-stopped\n    volumes:\n      - pihole_etc_pihole:/etc/pihole\n      - pihole_etc_dnsmasq_d:/etc/dnsmasq.d\n    container_name: pihole\nvolumes:\n  pihole_etc_pihole: {}\n  pihole_etc_dnsmasq_d: {}\n",
+    "note": "Portainer template generated from CasaOS AppStore. Original app ID: pihole.\nReview volumes and configurations. PUID/PGID default to 1000, TZ to Etc/UTC. App-specific paths like '/DATA/AppData/pihole/...' have been converted to Docker named volumes (e.g., 'casaos-pihole_config', 'casaos-pihole_data'). Ensure these named volumes are suitable or adjust as needed."
+  },
+  {
+    "type": 3,
+    "title": "Plex (CasaOS)",
+    "name": "casaos-plex",
+    "description": "No description provided.",
+    "logo": "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Plex/icon.png",
+    "categories": [
+      "Media",
+      "CasaOS"
+    ],
+    "platform": "linux",
+    "composefile_content": "name: plex\nservices:\n  plex:\n    devices:\n      - /dev/dri:/dev/dri\n      - /dev/dvb:/dev/dvb\n    environment:\n      - PGID=1000\n      - PUID=1000\n      - VERSION=docker\n    image: lscr.io/linuxserver/plex:1.41.3\n    deploy:\n      resources:\n        reservations:\n          memory: 256M\n    network_mode: host\n    restart: unless-stopped\n    volumes:\n      - plex_config:/config\n      - type: bind\n        source: /DATA/Media\n        target: /Media\n    container_name: plex\nvolumes:\n  plex_config: {}\n",
+    "note": "Portainer template generated from CasaOS AppStore. Original app ID: plex.\nReview volumes and configurations. PUID/PGID default to 1000, TZ to Etc/UTC. App-specific paths like '/DATA/AppData/plex/...' have been converted to Docker named volumes (e.g., 'casaos-plex_config', 'casaos-plex_data'). Ensure these named volumes are suitable or adjust as needed."
+  },
+  {
+    "type": 3,
+    "title": "Prowlarr (CasaOS)",
+    "name": "casaos-prowlarr",
+    "description": "No description provided.",
+    "logo": "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Prowlarr/icon.png",
+    "categories": [
+      "Downloader",
+      "CasaOS"
+    ],
+    "platform": "linux",
+    "composefile_content": "name: prowlarr\nservices:\n  prowlarr:\n    environment:\n      - PGID=1000\n      - PUID=1000\n      - TZ=Europe/London\n    image: linuxserver/prowlarr:1.32.2\n    deploy:\n      resources:\n        reservations:\n          memory: 64M\n    network_mode: bridge\n    ports:\n      - target: 9696\n        published: '9696'\n        protocol: tcp\n    restart: unless-stopped\n    volumes:\n      - type: bind\n        source: /DATA/AppData/prowlarr/config\n        target: /config\n    container_name: prowlarr\n",
+    "note": "Portainer template generated from CasaOS AppStore. Original app ID: Prowlarr.\nReview volumes and configurations. PUID/PGID default to 1000, TZ to Etc/UTC. App-specific paths like '/DATA/AppData/Prowlarr/...' have been converted to Docker named volumes (e.g., 'casaos-prowlarr_config', 'casaos-prowlarr_data'). Ensure these named volumes are suitable or adjust as needed."
+  },
+  {
+    "type": 3,
+    "title": "qBittorrent (CasaOS)",
+    "name": "casaos-qbittorrent",
+    "description": "No description provided.",
+    "logo": "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/qBittorrent/icon.png",
+    "categories": [
+      "Downloader",
+      "CasaOS"
+    ],
+    "platform": "linux",
+    "composefile_content": "name: qbittorrent\nservices:\n  qbittorrent:\n    environment:\n      - PGID=1000\n      - PUID=1000\n      - TZ=Etc/UTC\n      - UMASK=002\n    image: hotio/qbittorrent:release-5.0.4\n    deploy:\n      resources:\n        reservations:\n          memory: 256M\n    network_mode: bridge\n    ports:\n      - target: 8080\n        published: '8181'\n        protocol: tcp\n    restart: unless-stopped\n    volumes:\n      - qbittorrent_config:/config\n      - type: bind\n        source: /DATA\n        target: /DATA\n    container_name: qbittorrent\nvolumes:\n  qbittorrent_config: {}\n",
+    "note": "Portainer template generated from CasaOS AppStore. Original app ID: qbittorrent.\nReview volumes and configurations. PUID/PGID default to 1000, TZ to Etc/UTC. App-specific paths like '/DATA/AppData/qbittorrent/...' have been converted to Docker named volumes (e.g., 'casaos-qbittorrent_config', 'casaos-qbittorrent_data'). Ensure these named volumes are suitable or adjust as needed."
+  },
+  {
+    "type": 3,
+    "title": "Radarr (CasaOS)",
+    "name": "casaos-radarr",
+    "description": "No description provided.",
+    "logo": "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Radarr/icon.png",
+    "categories": [
+      "Media",
+      "CasaOS"
+    ],
+    "platform": "linux",
+    "composefile_content": "name: radarr\nservices:\n  radarr:\n    environment:\n      - PGID=1000\n      - PUID=1000\n      - TZ=Etc/UTC\n    image: linuxserver/radarr:5.7.0\n    deploy:\n      resources:\n        reservations:\n          memory: 256M\n    network_mode: bridge\n    ports:\n      - target: 7878\n        published: '7878'\n        protocol: tcp\n    restart: unless-stopped\n    volumes:\n      - radarr_config:/config\n      - type: bind\n        source: /DATA/Media/Movies\n        target: /movies\n      - type: bind\n        source: /DATA/Downloads\n        target: /downloads\n    container_name: radarr\nvolumes:\n  radarr_config: {}\n",
+    "note": "Portainer template generated from CasaOS AppStore. Original app ID: radarr.\nReview volumes and configurations. PUID/PGID default to 1000, TZ to Etc/UTC. App-specific paths like '/DATA/AppData/radarr/...' have been converted to Docker named volumes (e.g., 'casaos-radarr_config', 'casaos-radarr_data'). Ensure these named volumes are suitable or adjust as needed."
+  },
+  {
+    "type": 3,
+    "title": "Readarr (CasaOS)",
+    "name": "casaos-readarr",
+    "description": "No description provided.",
+    "logo": "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Readarr/icon.png",
+    "categories": [
+      "Media",
+      "CasaOS"
+    ],
+    "platform": "linux",
+    "composefile_content": "name: readarr\nservices:\n  readarr:\n    environment:\n      - PGID=1000\n      - PUID=1000\n      - TZ=Etc/UTC\n    image: linuxserver/readarr:0.3.10-develop\n    deploy:\n      resources:\n        reservations:\n          memory: 64M\n    network_mode: bridge\n    ports:\n      - target: 8787\n        published: '8787'\n        protocol: tcp\n    restart: unless-stopped\n    volumes:\n      - readarr_config:/config\n      - type: bind\n        source: /DATA/Media/Books\n        target: /books\n      - type: bind\n        source: /DATA/Downloads\n        target: /downloads\n    container_name: readarr\nvolumes:\n  readarr_config: {}\n",
+    "note": "Portainer template generated from CasaOS AppStore. Original app ID: Readarr.\nReview volumes and configurations. PUID/PGID default to 1000, TZ to Etc/UTC. App-specific paths like '/DATA/AppData/Readarr/...' have been converted to Docker named volumes (e.g., 'casaos-readarr_config', 'casaos-readarr_data'). Ensure these named volumes are suitable or adjust as needed."
+  },
+  {
+    "type": 3,
+    "title": "Resilio-sync (CasaOS)",
+    "name": "casaos-resilio-sync",
+    "description": "No description provided.",
+    "logo": "https://play-lh.googleusercontent.com/I0yxZ5kBUFyFQqBOVLq9lsoOpJSx8A3RZQjR024T8r8TsLD58gDjCkYWKSq_WWpOT-A",
+    "categories": [
+      "CasaOS"
+    ],
+    "platform": "linux",
+    "composefile_content": "name: resilio-sync\nservices:\n  resilio-sync:\n    environment:\n      - PGID=1000\n      - PUID=1000\n      - TZ=Etc/UTC\n    image: linuxserver/resilio-sync:2.7.3\n    network_mode: bridge\n    ports:\n      - target: 55555\n        published: '55555'\n        protocol: tcp\n      - target: 8888\n        published: '8888'\n        protocol: tcp\n    restart: unless-stopped\n    volumes:\n      - resilio-sync_data:/sync\n      - resilio-sync_config:/config\n      - type: bind\n        source: /DATA/Downloads\n        target: /downloads\n    privileged: false\n    container_name: resilio-sync\nvolumes:\n  resilio-sync_data: {}\n  resilio-sync_config: {}\n",
+    "note": "Portainer template generated from CasaOS AppStore. Original app ID: Resilio-sync.\nReview volumes and configurations. PUID/PGID default to 1000, TZ to Etc/UTC. App-specific paths like '/DATA/AppData/Resilio-sync/...' have been converted to Docker named volumes (e.g., 'casaos-resilio-sync_config', 'casaos-resilio-sync_data'). Ensure these named volumes are suitable or adjust as needed."
+  },
+  {
+    "type": 3,
+    "title": "Sabnzbd (CasaOS)",
+    "name": "casaos-sabnzbd",
+    "description": "No description provided.",
+    "logo": "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Sabnzbd/icon.png",
+    "categories": [
+      "Media",
+      "CasaOS"
+    ],
+    "platform": "linux",
+    "composefile_content": "name: sabnzbd\nservices:\n  sabnzbd:\n    environment:\n      - PGID=1000\n      - PUID=1000\n      - TZ=Europe/London\n    image: linuxserver/sabnzbd:4.1.0\n    deploy:\n      resources:\n        reservations:\n          memory: 64M\n    network_mode: bridge\n    ports:\n      - target: 8080\n        published: '8282'\n        protocol: tcp\n    restart: unless-stopped\n    volumes:\n      - type: bind\n        source: /DATA/Downloads\n        target: /incomplete-downloads\n      - type: bind\n        source: /DATA/AppData/sabnzbd/config\n        target: /config\n      - type: bind\n        source: /DATA/Downloads\n        target: /downloads\n    container_name: sabnzbd\n",
+    "note": "Portainer template generated from CasaOS AppStore. Original app ID: Sabnzbd.\nReview volumes and configurations. PUID/PGID default to 1000, TZ to Etc/UTC. App-specific paths like '/DATA/AppData/Sabnzbd/...' have been converted to Docker named volumes (e.g., 'casaos-sabnzbd_config', 'casaos-sabnzbd_data'). Ensure these named volumes are suitable or adjust as needed."
+  },
+  {
+    "type": 3,
+    "title": "Sickchill (CasaOS)",
+    "name": "casaos-sickchill",
+    "description": "No description provided.",
+    "logo": "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Sickchill/icon.png",
+    "categories": [
+      "Media",
+      "CasaOS"
+    ],
+    "platform": "linux",
+    "composefile_content": "name: sickchill\nservices:\n  sickchill:\n    environment:\n      - PGID=1000\n      - PUID=1000\n      - TZ=Europe/London\n    image: linuxserver/sickchill:2023.6.27\n    deploy:\n      resources:\n        reservations:\n          memory: 64M\n    network_mode: bridge\n    ports:\n      - target: 8081\n        published: '8081'\n        protocol: tcp\n    restart: unless-stopped\n    volumes:\n      - type: bind\n        source: /DATA/AppData/sickchill/config\n        target: /config\n      - type: bind\n        source: /DATA/Downloads\n        target: /downloads\n      - type: bind\n        source: /DATA/Media/TV Shows\n        target: /tv\n    container_name: sickchill\n",
+    "note": "Portainer template generated from CasaOS AppStore. Original app ID: Sickchill.\nReview volumes and configurations. PUID/PGID default to 1000, TZ to Etc/UTC. App-specific paths like '/DATA/AppData/Sickchill/...' have been converted to Docker named volumes (e.g., 'casaos-sickchill_config', 'casaos-sickchill_data'). Ensure these named volumes are suitable or adjust as needed."
+  },
+  {
+    "type": 3,
+    "title": "Siyuan-Note (CasaOS)",
+    "name": "casaos-siyuan-note",
+    "description": "No description provided.",
+    "logo": "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Siyuan-Note/icon.png",
+    "categories": [
+      "Note",
+      "CasaOS"
+    ],
+    "platform": "linux",
+    "composefile_content": "name: siyuan-note\nservices:\n  siyuan-note:\n    command: '--accessAuthCode=casaos --workspace=/siyuan/workspace/'\n    environment:\n      - PUID=1000\n      - PGID=1000\n    image: b3log/siyuan:v3.0.1\n    deploy:\n      resources:\n        reservations:\n          memory: 512M\n    network_mode: bridge\n    ports:\n      - target: 6806\n        published: '6806'\n        protocol: tcp\n    restart: unless-stopped\n    volumes:\n      - siyuan-note_workspace:/siyuan/workspace\n    container_name: siyuan-note\nvolumes:\n  siyuan-note_workspace: {}\n",
+    "note": "Portainer template generated from CasaOS AppStore. Original app ID: Siyuan-Note.\nReview volumes and configurations. PUID/PGID default to 1000, TZ to Etc/UTC. App-specific paths like '/DATA/AppData/Siyuan-Note/...' have been converted to Docker named volumes (e.g., 'casaos-siyuan-note_config', 'casaos-siyuan-note_data'). Ensure these named volumes are suitable or adjust as needed."
+  },
+  {
+    "type": 3,
+    "title": "Smokeping (CasaOS)",
+    "name": "casaos-smokeping",
+    "description": "No description provided.",
+    "logo": "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Smokeping/icon.png",
+    "categories": [
+      "Network",
+      "CasaOS"
+    ],
+    "platform": "linux",
+    "composefile_content": "name: smokeping\nservices:\n  smokeping:\n    environment:\n      - PGID=1000\n      - PUID=1000\n      - TZ=Europe/London\n    image: linuxserver/smokeping:2.8.2\n    deploy:\n      resources:\n        reservations:\n          memory: 64M\n    network_mode: bridge\n    ports:\n      - target: 80\n        published: '10280'\n        protocol: tcp\n    restart: unless-stopped\n    volumes:\n      - type: bind\n        source: /DATA/AppData/smokeping/config\n        target: /config\n      - type: bind\n        source: /DATA/AppData/smokeping/data\n        target: /data\n    container_name: smokeping\n",
+    "note": "Portainer template generated from CasaOS AppStore. Original app ID: Smokeping.\nReview volumes and configurations. PUID/PGID default to 1000, TZ to Etc/UTC. App-specific paths like '/DATA/AppData/Smokeping/...' have been converted to Docker named volumes (e.g., 'casaos-smokeping_config', 'casaos-smokeping_data'). Ensure these named volumes are suitable or adjust as needed."
+  },
+  {
+    "type": 3,
+    "title": "Snapdrop (CasaOS)",
+    "name": "casaos-snapdrop",
+    "description": "No description provided.",
+    "logo": "https://play-lh.googleusercontent.com/3MaqM8DPTPa3bahBJRplO2fJGAH3536eSkziF-_tbOBbc399OYMoCycbI9dXBGxig-s",
+    "categories": [
+      "CasaOS"
+    ],
+    "platform": "linux",
+    "composefile_content": "name: snapdrop\nservices:\n  snapdrop:\n    environment:\n      - PGID=1000\n      - PUID=1000\n      - TZ=Etc/UTC\n    image: linuxserver/snapdrop:version-eac78009\n    network_mode: bridge\n    ports:\n      - target: 443\n        published: '443'\n        protocol: tcp\n      - target: 80\n        published: '89'\n        protocol: tcp\n    restart: unless-stopped\n    volumes:\n      - snapdrop_config:/config\n    privileged: false\n    container_name: snapdrop\nvolumes:\n  snapdrop_config: {}\n",
+    "note": "Portainer template generated from CasaOS AppStore. Original app ID: Snapdrop.\nReview volumes and configurations. PUID/PGID default to 1000, TZ to Etc/UTC. App-specific paths like '/DATA/AppData/Snapdrop/...' have been converted to Docker named volumes (e.g., 'casaos-snapdrop_config', 'casaos-snapdrop_data'). Ensure these named volumes are suitable or adjust as needed."
+  },
+  {
+    "type": 3,
+    "title": "Sonarr (CasaOS)",
+    "name": "casaos-sonarr",
+    "description": "No description provided.",
+    "logo": "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Sonarr/icon.png",
+    "categories": [
+      "Media",
+      "CasaOS"
+    ],
+    "platform": "linux",
+    "composefile_content": "name: sonarr\nservices:\n  sonarr:\n    environment:\n      - PGID=1000\n      - PUID=1000\n      - TZ=Etc/UTC\n    image: linuxserver/sonarr:3.0.10\n    deploy:\n      resources:\n        reservations:\n          memory: 256M\n    network_mode: bridge\n    ports:\n      - target: 8989\n        published: '8989'\n        protocol: tcp\n    restart: unless-stopped\n    volumes:\n      - sonarr_config:/config\n      - type: bind\n        source: /DATA/Media/TV Shows\n        target: /tv\n      - type: bind\n        source: /DATA/Downloads\n        target: /downloads\n    container_name: sonarr\nvolumes:\n  sonarr_config: {}\n",
+    "note": "Portainer template generated from CasaOS AppStore. Original app ID: sonarr.\nReview volumes and configurations. PUID/PGID default to 1000, TZ to Etc/UTC. App-specific paths like '/DATA/AppData/sonarr/...' have been converted to Docker named volumes (e.g., 'casaos-sonarr_config', 'casaos-sonarr_data'). Ensure these named volumes are suitable or adjust as needed."
+  },
+  {
+    "type": 3,
+    "title": "Syncthing (CasaOS)",
+    "name": "casaos-syncthing",
+    "description": "No description provided.",
+    "logo": "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Syncthing/icon.png",
+    "categories": [
+      "Backup, File Sync",
+      "CasaOS"
+    ],
+    "platform": "linux",
+    "composefile_content": "name: syncthing\nservices:\n  syncthing:\n    environment:\n      - PGID=1000\n      - PUID=1000\n      - TZ=Etc/UTC\n    image: linuxserver/syncthing:1.29.2\n    deploy:\n      resources:\n        reservations:\n          memory: 256M\n    network_mode: bridge\n    ports:\n      - target: 8384\n        published: '8384'\n        protocol: tcp\n      - target: 22000\n        published: '22000'\n        protocol: tcp\n      - target: 22000\n        published: '22000'\n        protocol: udp\n      - target: 21027\n        published: '21027'\n        protocol: udp\n    restart: unless-stopped\n    volumes:\n      - syncthing_config:/config\n      - type: bind\n        source: /DATA\n        target: /DATA\n    container_name: syncthing\nvolumes:\n  syncthing_config: {}\n",
+    "note": "Portainer template generated from CasaOS AppStore. Original app ID: syncthing.\nReview volumes and configurations. PUID/PGID default to 1000, TZ to Etc/UTC. App-specific paths like '/DATA/AppData/syncthing/...' have been converted to Docker named volumes (e.g., 'casaos-syncthing_config', 'casaos-syncthing_data'). Ensure these named volumes are suitable or adjust as needed."
+  },
+  {
+    "type": 3,
+    "title": "Tautulli (CasaOS)",
+    "name": "casaos-tautulli",
+    "description": "No description provided.",
+    "logo": "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Tautulli/icon.png",
+    "categories": [
+      "Media",
+      "CasaOS"
+    ],
+    "platform": "linux",
+    "composefile_content": "name: tautulli\nservices:\n  tautulli:\n    environment:\n      - PGID=1000\n      - PUID=1000\n      - TZ=Europe/London\n    image: linuxserver/tautulli:2.13.2\n    deploy:\n      resources:\n        reservations:\n          memory: 64M\n    network_mode: bridge\n    ports:\n      - target: 8181\n        published: '8181'\n    restart: unless-stopped\n    volumes:\n      - tautulli_config:/config\n    container_name: tautulli\nvolumes:\n  tautulli_config: {}\n",
+    "note": "Portainer template generated from CasaOS AppStore. Original app ID: tautulli.\nReview volumes and configurations. PUID/PGID default to 1000, TZ to Etc/UTC. App-specific paths like '/DATA/AppData/tautulli/...' have been converted to Docker named volumes (e.g., 'casaos-tautulli_config', 'casaos-tautulli_data'). Ensure these named volumes are suitable or adjust as needed."
+  },
+  {
+    "type": 3,
+    "title": "Transmission (CasaOS)",
+    "name": "casaos-transmission",
+    "description": "No description provided.",
+    "logo": "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Transmission/icon.png",
+    "categories": [
+      "Downloader",
+      "CasaOS"
+    ],
+    "platform": "linux",
+    "composefile_content": "name: transmission\nservices:\n  transmission:\n    environment:\n      - PASS=casaos\n      - PEERPORT=51413\n      - PGID=1000\n      - PUID=1000\n      - TZ=Europe/London\n      - USER=casaos\n    image: linuxserver/transmission:4.0.4\n    deploy:\n      resources:\n        reservations:\n          memory: 64M\n    network_mode: bridge\n    ports:\n      - target: 9091\n        published: '9091'\n        protocol: tcp\n      - target: 51413\n        published: '51413'\n        protocol: tcp\n      - target: 51413\n        published: '51413'\n        protocol: UDP\n    restart: unless-stopped\n    volumes:\n      - transmission_config:/config\n      - type: bind\n        source: /DATA/Downloads\n        target: /downloads\n      - type: bind\n        source: /DATA/Downloads/watch\n        target: /watch\n    container_name: transmission\nvolumes:\n  transmission_config: {}\n",
+    "note": "Portainer template generated from CasaOS AppStore. Original app ID: transmission.\nReview volumes and configurations. PUID/PGID default to 1000, TZ to Etc/UTC. App-specific paths like '/DATA/AppData/transmission/...' have been converted to Docker named volumes (e.g., 'casaos-transmission_config', 'casaos-transmission_data'). Ensure these named volumes are suitable or adjust as needed."
+  },
+  {
+    "type": 3,
+    "title": "Twingate (CasaOS)",
+    "name": "casaos-twingate-connector",
+    "description": "No description provided.",
+    "logo": "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Twingate/icon.png",
+    "categories": [
+      "Network",
+      "CasaOS"
+    ],
+    "platform": "linux",
+    "composefile_content": "name: twingate-connector\nservices:\n  twingate-connector:\n    image: twingate/connector:1\n    container_name: twingate-connector\n    command:\n      - /connectord\n    environment:\n      - TWINGATE_NETWORK=\n      - TWINGATE_ACCESS_TOKEN=\n      - TWINGATE_REFRESH_TOKEN=\n      - TWINGATE_LABEL_HOSTNAME=${HOSTNAME}\n    restart: unless-stopped\n    sysctls:\n      net.ipv4.ping_group_range: 0 2147483647\n    network_mode: default\n    privileged: false\n    cpu_shares: 90\n    deploy:\n      resources:\n        reservations:\n          memory: 500M\n",
+    "note": "Portainer template generated from CasaOS AppStore. Original app ID: twingate-connector.\nReview volumes and configurations. PUID/PGID default to 1000, TZ to Etc/UTC. App-specific paths like '/DATA/AppData/twingate-connector/...' have been converted to Docker named volumes (e.g., 'casaos-twingate-connector_config', 'casaos-twingate-connector_data'). Ensure these named volumes are suitable or adjust as needed."
+  },
+  {
+    "type": 3,
+    "title": "Unifi-controller (CasaOS)",
+    "name": "casaos-unifi-controller",
+    "description": "No description provided.",
+    "logo": "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Unifi-controller/icon.png",
+    "categories": [
+      "Network",
+      "CasaOS"
+    ],
+    "platform": "linux",
+    "composefile_content": "name: unifi-controller\nservices:\n  unifi-controller:\n    environment:\n      - MEM_LIMIT=1024\n      - MEM_STARTUP=1024\n      - PGID=1000\n      - PUID=1000\n    image: linuxserver/unifi-controller:8.0.7\n    deploy:\n      resources:\n        reservations:\n          memory: 64M\n    network_mode: bridge\n    ports:\n      - target: 3478\n        published: '3478'\n        protocol: udp\n      - target: 10001\n        published: '10001'\n        protocol: udp\n      - target: 8080\n        published: '8383'\n        protocol: tcp\n      - target: 8443\n        published: '8443'\n        protocol: tcp\n      - target: 1900\n        published: '1900'\n        protocol: udp\n      - target: 8843\n        published: '8843'\n        protocol: tcp\n      - target: 8880\n        published: '8880'\n        protocol: tcp\n      - target: 6789\n        published: '6789'\n        protocol: tcp\n      - target: 5514\n        published: '5514'\n        protocol: udp\n    restart: unless-stopped\n    volumes:\n      - unifi-controller_config:/config\n    container_name: unifi-controller\nvolumes:\n  unifi-controller_config: {}\n",
+    "note": "Portainer template generated from CasaOS AppStore. Original app ID: unifi-controller.\nReview volumes and configurations. PUID/PGID default to 1000, TZ to Etc/UTC. App-specific paths like '/DATA/AppData/unifi-controller/...' have been converted to Docker named volumes (e.g., 'casaos-unifi-controller_config', 'casaos-unifi-controller_data'). Ensure these named volumes are suitable or adjust as needed."
+  },
+  {
+    "type": 3,
+    "title": "UptimeKuma (CasaOS)",
+    "name": "casaos-uptimekuma",
+    "description": "No description provided.",
+    "logo": "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/UptimeKuma/icon.png",
+    "categories": [
+      "Network",
+      "CasaOS"
+    ],
+    "platform": "linux",
+    "composefile_content": "name: uptimekuma\nservices:\n  uptimekuma:\n    image: louislam/uptime-kuma:1.23.15-alpine\n    deploy:\n      resources:\n        reservations:\n          memory: 128M\n    network_mode: bridge\n    ports:\n      - target: 3001\n        published: '3001'\n        protocol: tcp\n    restart: unless-stopped\n    volumes:\n      - uptimekuma_app_data:/app/data\n    container_name: uptimekuma\nvolumes:\n  uptimekuma_app_data: {}\n",
+    "note": "Portainer template generated from CasaOS AppStore. Original app ID: uptimekuma.\nReview volumes and configurations. PUID/PGID default to 1000, TZ to Etc/UTC. App-specific paths like '/DATA/AppData/uptimekuma/...' have been converted to Docker named volumes (e.g., 'casaos-uptimekuma_config', 'casaos-uptimekuma_data'). Ensure these named volumes are suitable or adjust as needed."
+  },
+  {
+    "type": 3,
+    "title": "Vaultwarden (CasaOS)",
+    "name": "casaos-vaultwarden",
+    "description": "No description provided.",
+    "logo": "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Vaultwarden/icon.png",
+    "categories": [
+      "Utilities",
+      "CasaOS"
+    ],
+    "platform": "linux",
+    "composefile_content": "name: vaultwarden\nservices:\n  vaultwarden:\n    image: vaultwarden/server:1.32.7\n    deploy:\n      resources:\n        reservations:\n          memory: 256M\n    network_mode: bridge\n    ports:\n      - target: 80\n        published: '10380'\n        protocol: tcp\n    restart: unless-stopped\n    volumes:\n      - vaultwarden_data:/data\n    container_name: vaultwarden\nvolumes:\n  vaultwarden_data: {}\n",
+    "note": "Portainer template generated from CasaOS AppStore. Original app ID: vaultwarden.\nReview volumes and configurations. PUID/PGID default to 1000, TZ to Etc/UTC. App-specific paths like '/DATA/AppData/vaultwarden/...' have been converted to Docker named volumes (e.g., 'casaos-vaultwarden_config', 'casaos-vaultwarden_data'). Ensure these named volumes are suitable or adjust as needed."
+  },
+  {
+    "type": 3,
+    "title": "VoceChat (CasaOS)",
+    "name": "casaos-vocechat",
+    "description": "No description provided.",
+    "logo": "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/VoceChat/icon.png",
+    "categories": [
+      "Chat",
+      "CasaOS"
+    ],
+    "platform": "linux",
+    "composefile_content": "name: vocechat\nservices:\n  vocechat:\n    environment:\n      - TZ=Etc/UTC\n    image: privoce/vocechat-server:v0.3.33\n    deploy:\n      resources:\n        reservations:\n          memory: 64M\n    network_mode: bridge\n    ports:\n      - target: 3000\n        published: '3009'\n        protocol: tcp\n    restart: unless-stopped\n    volumes:\n      - vocechat_home_vocechat_server_data:/home/vocechat-server/data\n    container_name: vocechat\nvolumes:\n  vocechat_home_vocechat_server_data: {}\n",
+    "note": "Portainer template generated from CasaOS AppStore. Original app ID: vocechat.\nReview volumes and configurations. PUID/PGID default to 1000, TZ to Etc/UTC. App-specific paths like '/DATA/AppData/vocechat/...' have been converted to Docker named volumes (e.g., 'casaos-vocechat_config', 'casaos-vocechat_data'). Ensure these named volumes are suitable or adjust as needed."
+  }
+]
