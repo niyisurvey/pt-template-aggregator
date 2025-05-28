@@ -94,7 +94,6 @@ export default {
       "https://raw.githubusercontent.com/shmolf/portainer-templates/main/templates-2.0.json", // Added
 			"https://raw.githubusercontent.com/niyisurvey/pt-template-aggregator/main/casaos-official-templates.json",
 			"https://raw.githubusercontent.com/niyisurvey/pt-template-aggregator/main/casaos-playstore-templates.json"
-];
     ];
 
     const allTemplateUrlsToFetch = [...new Set([...userProvidedTemplateUrls, ...defaultTemplateProviderURLs])];
